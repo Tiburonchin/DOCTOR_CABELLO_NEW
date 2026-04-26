@@ -36,15 +36,15 @@ $gallery_items = [
 
 <!-- 1. TRANSICIÓN DE ENTRADA -->
 <section class="h-[60vh] w-full flex flex-col items-center justify-center bg-white relative z-10 border-b border-gray-100">
-    <div class="text-center space-y-6 px-6 max-w-4xl" data-aos="fade-up">
+    <div class="text-center space-y-6 px-6 max-w-4xl">
         <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/5 border border-primary/10 text-primary-dark text-xs font-semibold uppercase tracking-widest mb-2">
-            Resultados Reales
+            Transformaciones que inspiran
         </div>
         <h2 class="text-4xl md:text-6xl font-display font-bold text-gray-900 leading-tight">
-            Testigos de nuestra <span class="text-primary">excelencia capilar.</span>
+            Historias que recuperan <span class="inline-block text-transparent bg-clip-text bg-gradient-to-r from-secondary to-primary">su propia esencia.</span>
         </h2>
         <p class="text-gray-500 text-lg md:text-xl font-light max-w-2xl mx-auto">
-            Haz clic en las imágenes para ver el cambio. Cada caso es una historia de transformación real.
+            Más que un procedimiento, es un cambio de vida. Explora los resultados reales de quienes confiaron en nosotros y cómo recuperaron su seguridad. <span class="block mt-4 text-primary font-medium text-sm">(Haz clic en las imágenes para ver el cambio)</span>
         </p>
     </div>
     <div class="absolute bottom-12 left-1/2 -translate-x-1/2 animate-bounce flex flex-col items-center gap-2">

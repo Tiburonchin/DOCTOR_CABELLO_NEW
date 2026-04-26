@@ -375,11 +375,17 @@ Text Domain: doctor-cabello
   .ml-1 {
     margin-left: calc(var(--spacing) * 1);
   }
+  .block {
+    display: block;
+  }
   .flex {
     display: flex;
   }
   .hidden {
     display: none;
+  }
+  .inline-block {
+    display: inline-block;
   }
   .inline-flex {
     display: inline-flex;
