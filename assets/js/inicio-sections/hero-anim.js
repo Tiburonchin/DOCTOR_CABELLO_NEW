@@ -7,6 +7,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // Register GSAP Plugins
     gsap.registerPlugin(ScrollTrigger);
 
+    // 0. CONTROL DE VELOCIDAD DEL VIDEO
+    const heroVideo = document.getElementById('hero-video');
+    if (heroVideo) {
+        heroVideo.playbackRate = 0.75; // Ajusta este valor (0.5 = mitad de velocidad, 1 = normal)
+    }
+
     // ==========================================
     // 1. ANIMACIÓN DE ENTRADA (HERO SECTION)
     // ==========================================
@@ -39,20 +45,24 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ==========================================
-    // 2. EFECTO DE SALIDA (SCROLL PARALLAX DEL HERO)
+    // 2. EFECTO DE SALIDA (SCROLL PARALLAX DEL HERO POR BLOQUES)
     // ==========================================
-    // Al bajar, el texto se hunde suavemente y desaparece
-    gsap.to('#hero-content', {
-        scrollTrigger: {
-            trigger: "#hero-section",
-            start: "top top",      
-            end: "bottom top",     
-            scrub: true            
-        },
-        y: 150, 
-        opacity: 0,
-        ease: "none"
-    });
+    const heroContent = document.querySelector('#hero-content');
+    if (heroContent) {
+        const exitTl = gsap.timeline({
+            scrollTrigger: {
+                trigger: "#hero-section",
+                start: "top top",      
+                end: "bottom top",     
+                scrub: true            
+            }
+        });
+
+        exitTl.to('.hero-title', { y: -100, opacity: 0, ease: "none" }, 0)
+              .to('.hero-desc', { y: -50, opacity: 0, ease: "none" }, 0.1)
+              .to('.hero-btn-container', { y: -30, opacity: 0, ease: "none" }, 0.2)
+              .to('.hero-bg-overlay', { opacity: 0.5, ease: "none" }, 0); // Opcional: oscurecer fondo
+    }
 
     // ==========================================
     // 3. EFECTO DE TEXT SCRAMBLE (Reemplazo gratuito)

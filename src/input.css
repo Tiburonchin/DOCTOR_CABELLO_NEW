@@ -98,11 +98,33 @@ Text Domain: doctor-cabello
 }
 
 @layer base {
-body {
-    @apply bg-gray-900 text-white antialiased overflow-x-hidden;
-    scroll-behavior: auto; /* Desactivar smooth nativo para control GSAP */
-    -moz-osx-font-smoothing: grayscale;
-}
+    body {
+        @apply bg-gray-50 text-gray-600 antialiased overflow-x-hidden;
+        scroll-behavior: auto; /* Desactivar smooth nativo para control GSAP/Lenis */
+        -moz-osx-font-smoothing: grayscale;
+        margin: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        @apply font-display;
+    }
+
+    /* Ocultar scrollbar global */
+    ::-webkit-scrollbar {
+        width: 0px;
+        background: transparent;
+    }
+
+    /* Estilos Base para Lenis (Smooth Scroll) */
+    html.lenis { height: auto; }
+    .lenis.lenis-smooth { scroll-behavior: auto; }
+    .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+    .lenis.lenis-stopped { overflow: hidden; }
+    .lenis.lenis-scrolling iframe { pointer-events: none; }
+
+    section {
+        @apply relative overflow-hidden;
+    }
 }
 
 @layer components {
@@ -211,5 +233,91 @@ body {
     /* Evitar saltos de línea molestos al cambiar texto animado */
     .scramble-container {
         @apply min-h-[120px] md:min-h-[100px] flex flex-col justify-start;
+    }
+
+    /* ========================================
+      TRATAMIENTOS SECTION STYLES
+    ========================================
+    */
+
+    .bg-gradient-radial {
+        background: radial-gradient(circle at 50% 0%, rgba(var(--rgb-primary), 0.08) 0%, transparent 70%);
+    }
+
+    /* Custom Scrollbar para paneles */
+    .custom-scrollbar::-webkit-scrollbar {
+        width: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+        background: var(--color-gray-900);
+        opacity: 0.5;
+        border-radius: 8px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: var(--color-gray-600);
+        border-radius: 8px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+        background: var(--color-gray-400);
+    }
+
+    .perspective-1000 {
+        perspective: 1000px;
+    }
+
+    .pres-image-wrapper {
+        transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .pres-image-wrapper:hover {
+        transform: translateY(-5px) rotateX(2deg) rotateY(-2deg);
+    }
+
+    /* Glow sutil para elementos destacados */
+    .shadow-primary-glow {
+        box-shadow: 0 10px 25px -5px rgba(var(--rgb-primary), 0.3);
+    }
+
+    /* ========================================
+      HORIZONTAL GALLERY STYLES
+    ========================================
+    */
+
+    .gallery-shadow {
+        box-shadow: 0 20px 40px -10px rgba(15, 23, 42, 0.15), 0 0 20px rgba(36, 80, 176, 0.05);
+    }
+
+    .container-fluid {
+        @apply w-full px-0 mx-auto;
+    }
+
+    .horiz-gallery-strip,
+    .horiz-gallery-wrapper {
+        @apply flex flex-nowrap relative;
+        will-change: transform;
+        /* Solución Anti-Tearing (Desgarro) */
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        transform-style: preserve-3d;
+    }
+
+    .project-wrap {
+        width: 80vw;
+        @apply p-4 box-content shrink-0;
+    }
+
+    @media (min-width: 768px) {
+        .project-wrap {
+            width: 33.33vw;
+            @apply p-8;
+        }
+    }
+
+    .project-wrap img {
+        @apply w-full aspect-square object-cover rounded-2xl;
+        /* Solución Anti-Tearing para las imágenes */
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        transform: translateZ(0);
     }
 }

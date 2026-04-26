@@ -25,6 +25,9 @@ function doctor_cabello_scripts() {
     wp_enqueue_script( 'gsap', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js', array(), '3.12.2', true );
     wp_enqueue_script( 'gsap-scrollto', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js', array('gsap'), '3.12.2', true );
     wp_enqueue_script( 'gsap-scrolltrigger', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js', array('gsap'), '3.12.2', true );
+    
+    // Lenis Smooth Scroll
+    wp_enqueue_script( 'lenis', 'https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js', array(), '1.0.34', true );
 
     // Global transitions
     wp_enqueue_script( 'doctor-cabello-global-transitions', get_template_directory_uri() . '/assets/js/global-transitions.js', array('gsap'), _S_VERSION, true );
@@ -36,8 +39,8 @@ function doctor_cabello_scripts() {
     // Conditional scripts for front-page
     if ( is_front_page() ) {
         wp_enqueue_script( 'hero-anim', get_template_directory_uri() . '/assets/js/inicio-sections/hero-anim.js', array('gsap', 'gsap-scrolltrigger'), _S_VERSION, true );
-        wp_enqueue_script( 'ribbon-logic', get_template_directory_uri() . '/assets/js/inicio-sections/ribbon-logic.js', array(), _S_VERSION, true );
-        // Add others as needed...
+        wp_enqueue_script( 'tratamientos-presentacion', get_template_directory_uri() . '/assets/js/inicio-sections/tratamientos.js', array('gsap', 'gsap-scrolltrigger'), _S_VERSION, true );
+        wp_enqueue_script( 'galeria-horizontal', get_template_directory_uri() . '/assets/js/inicio-sections/galeria.js', array('gsap', 'gsap-scrolltrigger', 'lenis'), _S_VERSION, true );
     }
 }
 add_action( 'wp_enqueue_scripts', 'doctor_cabello_scripts' );

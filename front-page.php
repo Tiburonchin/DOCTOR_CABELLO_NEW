@@ -12,8 +12,13 @@ get_header();
     $sections = array(
         '01-hero',
         '02-tratamientos',
+        '03-galeria',
         '03-nosotros',
+        '04-analisis',
+        '05-acerca',
+        '06-testimonios',
         '04-contacto',
+        '07-conclusion',
     );
 
     foreach ( $sections as $section ) {

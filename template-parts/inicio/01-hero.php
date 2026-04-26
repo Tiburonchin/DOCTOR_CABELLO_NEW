@@ -7,14 +7,15 @@
     
     <!-- Video Background -->
     <div class="absolute inset-0 z-0">
-        <video autoplay loop muted playsinline class="w-full h-full object-cover">
+        <video id="hero-video" autoplay loop muted playsinline class="w-full h-full object-cover">
             <source src="https://github.com/Tiburonchin/Videos_Doctor_Cabello/raw/main/herosectionV1.mp4" type="video/mp4">
             Tu navegador no soporta videos HTML5.
         </video>
     </div>
 
-    <!-- Gradient Overlay (Oscuro a la izquierda, difuminado a la derecha) -->
-    <div class="absolute inset-0 z-10 bg-gradient-to-r from-slate-900/95 via-slate-900/60 to-transparent"></div>
+    <!-- Gradient Overlay (Oscurecido armónico con profundidad) -->
+    <div class="absolute inset-0 z-10 bg-slate-950/30"></div>
+    <div class="absolute inset-0 z-20 bg-gradient-to-r from-slate-950/95 via-slate-950/50 to-transparent"></div>
 
     <!-- Contenido Inferior Izquierdo (Fiel a la referencia) -->
     <div id="hero-content" class="relative z-20 w-full max-w-3xl">
