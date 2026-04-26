@@ -60,16 +60,25 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ==========================================
-    // 3. Header visibility (Hide on Scroll Down)
+    // 3. Header visibility & Retraction
     // ==========================================
     let lastScroll = 0;
-    const handleHeaderVisibility = () => {
+    const handleHeaderState = () => {
         const currentScroll = window.pageYOffset;
+        
+        // 1. Retraction Logic (Shrink/Change style on scroll)
+        if (currentScroll > 50) {
+            header.classList.add('header-retracted');
+        } else {
+            header.classList.remove('header-retracted');
+        }
+
+        // 2. Hide/Show Logic
         if (currentScroll <= 0) {
             gsap.to(header, { y: 0, opacity: 1, duration: 0.3 });
             return;
         }
-        if (currentScroll > lastScroll) {
+        if (currentScroll > lastScroll && currentScroll > 200) {
             gsap.to(header, { y: -150, opacity: 0, duration: 0.4, ease: "power2.inOut" });
         } else {
             gsap.to(header, { y: 0, opacity: 1, duration: 0.4, ease: "power2.out" });
@@ -77,5 +86,48 @@ document.addEventListener('DOMContentLoaded', () => {
         lastScroll = currentScroll;
     };
 
-    window.addEventListener('scroll', handleHeaderVisibility);
+    window.addEventListener('scroll', handleHeaderState);
+
+    // ==========================================
+    // 4. Mobile Menu Logic
+    // ==========================================
+    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileMenuClose = document.getElementById('mobile-menu-close');
+    const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+
+    const toggleMenu = (show) => {
+        if (show) {
+            mobileMenu.classList.remove('translate-x-full');
+            mobileMenuToggle.classList.add('is-active');
+            document.body.style.overflow = 'hidden'; // Prevent scroll
+        } else {
+            mobileMenu.classList.add('translate-x-full');
+            mobileMenuToggle.classList.remove('is-active');
+            document.body.style.overflow = '';
+        }
+    };
+
+    mobileMenuToggle.addEventListener('click', () => {
+        const isOpened = !mobileMenu.classList.contains('translate-x-full');
+        toggleMenu(!isOpened);
+    });
+
+    if (mobileMenuClose) {
+        mobileMenuClose.addEventListener('click', () => toggleMenu(false));
+    }
+
+    mobileLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const target = link.getAttribute('href');
+            toggleMenu(false);
+            if (target && target.startsWith('#')) {
+                // Wait for menu animation to finish before scrolling
+                setTimeout(() => {
+                    scrollToSection(target);
+                }, 400);
+            }
+        });
+    });
 });

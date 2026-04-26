@@ -165,4 +165,48 @@ body {
         background-color: #eff6ff; /* blue-50 */
         @apply text-primary font-medium;
     }
+
+    /* ========================================
+      HEADER RETRACTED STATE (Scroll Logic)
+    ========================================
+    */
+    #main-header.header-retracted {
+        @apply top-2;
+    }
+
+    #main-header.header-retracted > div {
+        @apply max-w-2xl py-2 px-6 bg-primary shadow-primary-glow border-none;
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center;
+    }
+
+    /* Text & Logo colors in retracted state */
+    #main-header.header-retracted .font-display {
+        @apply text-white;
+    }
+    #main-header.header-retracted .group div {
+        @apply bg-white text-primary;
+    }
+
+    /* Hide elements in retracted state */
+    #main-header.header-retracted nav,
+    #main-header.header-retracted .header-socials {
+        @apply hidden;
+    }
+
+    /* Show hamburger in retracted state on desktop */
+    #main-header.header-retracted #mobile-menu-toggle {
+        @apply flex;
+    }
+
+    /* Retracted Hamburger colors */
+    #main-header.header-retracted #mobile-menu-toggle span {
+        @apply bg-white;
+    }
+
+    /* Smooth transitions for retraction */
+    #main-header > div {
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
 }
