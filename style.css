@@ -37,9 +37,9 @@ Text Domain: doctor-cabello
     --color-gray-600: #475569;
     --color-gray-800: oklch(27.8% 0.033 256.848);
     --color-gray-900: #0f172a;
+    --color-black: #000;
     --color-white: #ffffff;
     --spacing: 0.25rem;
-    --container-xs: 20rem;
     --container-md: 28rem;
     --container-xl: 36rem;
     --container-2xl: 42rem;
@@ -76,15 +76,12 @@ Text Domain: doctor-cabello
     --font-weight-bold: 700;
     --font-weight-extrabold: 800;
     --tracking-tight: -0.025em;
-    --tracking-wide: 0.025em;
-    --tracking-wider: 0.05em;
     --tracking-widest: 0.1em;
     --leading-tight: 1.25;
     --leading-relaxed: 1.625;
     --radius-lg: 1rem;
     --radius-xl: 1.5rem;
     --radius-2xl: 1rem;
-    --radius-3xl: 1.5rem;
     --animate-bounce: bounce 1s infinite;
     --blur-sm: 8px;
     --blur-md: 12px;
@@ -101,7 +98,6 @@ Text Domain: doctor-cabello
     --color-primary-hover: #1d3f94;
     --color-secondary: #2596be;
     --color-secondary-light: #3db4d8;
-    --color-secondary-dark: #1a7899;
     --font-display: "Outfit", var(--font-sans);
     --radius-full: 9999px;
     --z-transition: 200;
@@ -286,6 +282,9 @@ Text Domain: doctor-cabello
   .top-0 {
     top: calc(var(--spacing) * 0);
   }
+  .top-4 {
+    top: calc(var(--spacing) * 4);
+  }
   .top-6 {
     top: calc(var(--spacing) * 6);
   }
@@ -298,23 +297,20 @@ Text Domain: doctor-cabello
   .right-0 {
     right: calc(var(--spacing) * 0);
   }
+  .right-4 {
+    right: calc(var(--spacing) * 4);
+  }
   .right-8 {
     right: calc(var(--spacing) * 8);
   }
   .-bottom-6 {
     bottom: calc(var(--spacing) * -6);
   }
-  .-bottom-12 {
-    bottom: calc(var(--spacing) * -12);
-  }
   .bottom-8 {
     bottom: calc(var(--spacing) * 8);
   }
   .bottom-12 {
     bottom: calc(var(--spacing) * 12);
-  }
-  .-left-12 {
-    left: calc(var(--spacing) * -12);
   }
   .left-0 {
     left: calc(var(--spacing) * 0);
@@ -324,9 +320,6 @@ Text Domain: doctor-cabello
   }
   .left-1\/2 {
     left: calc(1 / 2 * 100%);
-  }
-  .left-6 {
-    left: calc(var(--spacing) * 6);
   }
   .-z-10 {
     z-index: calc(10 * -1);
@@ -424,23 +417,14 @@ Text Domain: doctor-cabello
   .h-11 {
     height: calc(var(--spacing) * 11);
   }
-  .h-16 {
-    height: calc(var(--spacing) * 16);
-  }
   .h-32 {
     height: calc(var(--spacing) * 32);
-  }
-  .h-48 {
-    height: calc(var(--spacing) * 48);
   }
   .h-\[1px\] {
     height: 1px;
   }
   .h-\[60vh\] {
     height: 60vh;
-  }
-  .h-\[70vh\] {
-    height: 70vh;
   }
   .h-\[400px\] {
     height: 400px;
@@ -487,14 +471,8 @@ Text Domain: doctor-cabello
   .w-12 {
     width: calc(var(--spacing) * 12);
   }
-  .w-16 {
-    width: calc(var(--spacing) * 16);
-  }
   .w-32 {
     width: calc(var(--spacing) * 32);
-  }
-  .w-48 {
-    width: calc(var(--spacing) * 48);
   }
   .w-fit {
     width: fit-content;
@@ -523,9 +501,6 @@ Text Domain: doctor-cabello
   .max-w-xl {
     max-width: var(--container-xl);
   }
-  .max-w-xs {
-    max-width: var(--container-xs);
-  }
   .flex-1 {
     flex: 1;
   }
@@ -548,6 +523,10 @@ Text Domain: doctor-cabello
   }
   .translate-x-full {
     --tw-translate-x: 100%;
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
+  .translate-y-2 {
+    --tw-translate-y: calc(var(--spacing) * 2);
     translate: var(--tw-translate-x) var(--tw-translate-y);
   }
   .translate-y-8 {
@@ -590,9 +569,6 @@ Text Domain: doctor-cabello
   .justify-center {
     justify-content: center;
   }
-  .justify-end {
-    justify-content: flex-end;
-  }
   .gap-1 {
     gap: calc(var(--spacing) * 1);
   }
@@ -630,11 +606,11 @@ Text Domain: doctor-cabello
   .overflow-hidden {
     overflow: hidden;
   }
+  .overflow-visible {
+    overflow: visible;
+  }
   .rounded-2xl {
     border-radius: var(--radius-2xl);
-  }
-  .rounded-3xl {
-    border-radius: var(--radius-3xl);
   }
   .rounded-full {
     border-radius: var(--radius-full);
@@ -678,15 +654,6 @@ Text Domain: doctor-cabello
       border-color: color-mix(in oklab, var(--color-primary) 20%, transparent);
     }
   }
-  .border-secondary {
-    border-color: var(--color-secondary);
-  }
-  .border-secondary\/10 {
-    border-color: color-mix(in srgb, #2596be 10%, transparent);
-    @supports (color: color-mix(in lab, red, red)) {
-      border-color: color-mix(in oklab, var(--color-secondary) 10%, transparent);
-    }
-  }
   .border-slate-100 {
     border-color: var(--color-slate-100);
   }
@@ -699,11 +666,23 @@ Text Domain: doctor-cabello
       border-color: color-mix(in oklab, var(--color-white) 5%, transparent);
     }
   }
+  .border-white\/30 {
+    border-color: color-mix(in srgb, #ffffff 30%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      border-color: color-mix(in oklab, var(--color-white) 30%, transparent);
+    }
+  }
+  .\!bg-primary {
+    background-color: var(--color-primary) !important;
+  }
   .bg-emerald-100 {
     background-color: var(--color-emerald-100);
   }
   .bg-gray-50 {
     background-color: var(--color-gray-50);
+  }
+  .bg-gray-200 {
+    background-color: var(--color-gray-200);
   }
   .bg-gray-400 {
     background-color: var(--color-gray-400);
@@ -732,15 +711,6 @@ Text Domain: doctor-cabello
       background-color: color-mix(in oklab, var(--color-primary) 10%, transparent);
     }
   }
-  .bg-secondary {
-    background-color: var(--color-secondary);
-  }
-  .bg-secondary\/5 {
-    background-color: color-mix(in srgb, #2596be 5%, transparent);
-    @supports (color: color-mix(in lab, red, red)) {
-      background-color: color-mix(in oklab, var(--color-secondary) 5%, transparent);
-    }
-  }
   .bg-slate-900 {
     background-color: var(--color-slate-900);
   }
@@ -755,6 +725,12 @@ Text Domain: doctor-cabello
   }
   .bg-white {
     background-color: var(--color-white);
+  }
+  .bg-white\/20 {
+    background-color: color-mix(in srgb, #ffffff 20%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-white) 20%, transparent);
+    }
   }
   .bg-white\/90 {
     background-color: color-mix(in srgb, #ffffff 90%, transparent);
@@ -785,17 +761,6 @@ Text Domain: doctor-cabello
     }
     --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
   }
-  .from-gray-900 {
-    --tw-gradient-from: var(--color-gray-900);
-    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
-  }
-  .from-gray-900\/60 {
-    --tw-gradient-from: color-mix(in srgb, #0f172a 60%, transparent);
-    @supports (color: color-mix(in lab, red, red)) {
-      --tw-gradient-from: color-mix(in oklab, var(--color-gray-900) 60%, transparent);
-    }
-    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
-  }
   .from-primary {
     --tw-gradient-from: var(--color-primary);
     --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
@@ -804,13 +769,6 @@ Text Domain: doctor-cabello
     --tw-gradient-from: color-mix(in srgb, #2450b0 5%, transparent);
     @supports (color: color-mix(in lab, red, red)) {
       --tw-gradient-from: color-mix(in oklab, var(--color-primary) 5%, transparent);
-    }
-    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
-  }
-  .from-primary\/40 {
-    --tw-gradient-from: color-mix(in srgb, #2450b0 40%, transparent);
-    @supports (color: color-mix(in lab, red, red)) {
-      --tw-gradient-from: color-mix(in oklab, var(--color-primary) 40%, transparent);
     }
     --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
   }
@@ -916,9 +874,6 @@ Text Domain: doctor-cabello
   .py-1\.5 {
     padding-block: calc(var(--spacing) * 1.5);
   }
-  .py-2 {
-    padding-block: calc(var(--spacing) * 2);
-  }
   .py-3 {
     padding-block: calc(var(--spacing) * 3);
   }
@@ -1003,10 +958,6 @@ Text Domain: doctor-cabello
   .text-\[10px\] {
     font-size: 10px;
   }
-  .leading-\[1\.1\] {
-    --tw-leading: 1.1;
-    line-height: 1.1;
-  }
   .leading-\[1\.05\] {
     --tw-leading: 1.05;
     line-height: 1.05;
@@ -1051,14 +1002,6 @@ Text Domain: doctor-cabello
     --tw-tracking: var(--tracking-tight);
     letter-spacing: var(--tracking-tight);
   }
-  .tracking-wide {
-    --tw-tracking: var(--tracking-wide);
-    letter-spacing: var(--tracking-wide);
-  }
-  .tracking-wider {
-    --tw-tracking: var(--tracking-wider);
-    letter-spacing: var(--tracking-wider);
-  }
   .tracking-widest {
     --tw-tracking: var(--tracking-widest);
     letter-spacing: var(--tracking-widest);
@@ -1084,47 +1027,14 @@ Text Domain: doctor-cabello
   .text-gray-900 {
     color: var(--color-gray-900);
   }
-  .text-gray-900\/20 {
-    color: color-mix(in srgb, #0f172a 20%, transparent);
-    @supports (color: color-mix(in lab, red, red)) {
-      color: color-mix(in oklab, var(--color-gray-900) 20%, transparent);
-    }
-  }
-  .text-gray-900\/40 {
-    color: color-mix(in srgb, #0f172a 40%, transparent);
-    @supports (color: color-mix(in lab, red, red)) {
-      color: color-mix(in oklab, var(--color-gray-900) 40%, transparent);
-    }
-  }
   .text-primary {
     color: var(--color-primary);
   }
   .text-primary-dark {
     color: var(--color-primary-dark);
   }
-  .text-primary\/20 {
-    color: color-mix(in srgb, #2450b0 20%, transparent);
-    @supports (color: color-mix(in lab, red, red)) {
-      color: color-mix(in oklab, var(--color-primary) 20%, transparent);
-    }
-  }
-  .text-primary\/30 {
-    color: color-mix(in srgb, #2450b0 30%, transparent);
-    @supports (color: color-mix(in lab, red, red)) {
-      color: color-mix(in oklab, var(--color-primary) 30%, transparent);
-    }
-  }
   .text-secondary {
     color: var(--color-secondary);
-  }
-  .text-secondary-dark {
-    color: var(--color-secondary-dark);
-  }
-  .text-secondary\/40 {
-    color: color-mix(in srgb, #2596be 40%, transparent);
-    @supports (color: color-mix(in lab, red, red)) {
-      color: color-mix(in oklab, var(--color-secondary) 40%, transparent);
-    }
   }
   .text-slate-400 {
     color: var(--color-slate-400);
@@ -1153,12 +1063,6 @@ Text Domain: doctor-cabello
   .opacity-0 {
     opacity: 0%;
   }
-  .opacity-30 {
-    opacity: 30%;
-  }
-  .opacity-50 {
-    opacity: 50%;
-  }
   .opacity-90 {
     opacity: 90%;
   }
@@ -1167,10 +1071,6 @@ Text Domain: doctor-cabello
   }
   .shadow-\[0_8px_30px_rgb\(0\,0\,0\,0\.08\)\] {
     --tw-shadow: 0 8px 30px var(--tw-shadow-color, rgb(0,0,0,0.08));
-    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
-  }
-  .shadow-inner {
-    --tw-shadow: inset 0 2px 4px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.05));
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
   }
   .shadow-lg {
@@ -1263,10 +1163,6 @@ Text Domain: doctor-cabello
     --tw-duration: 500ms;
     transition-duration: 500ms;
   }
-  .duration-1000 {
-    --tw-duration: 1000ms;
-    transition-duration: 1000ms;
-  }
   .group-hover\:translate-x-1 {
     &:is(:where(.group):hover *) {
       @media (hover: hover) {
@@ -1275,13 +1171,11 @@ Text Domain: doctor-cabello
       }
     }
   }
-  .group-hover\:scale-105 {
+  .group-hover\:translate-y-0 {
     &:is(:where(.group):hover *) {
       @media (hover: hover) {
-        --tw-scale-x: 105%;
-        --tw-scale-y: 105%;
-        --tw-scale-z: 105%;
-        scale: var(--tw-scale-x) var(--tw-scale-y);
+        --tw-translate-y: calc(var(--spacing) * 0);
+        translate: var(--tw-translate-x) var(--tw-translate-y);
       }
     }
   }
@@ -1320,16 +1214,6 @@ Text Domain: doctor-cabello
       }
     }
   }
-  .group-hover\/card\:bg-secondary\/10 {
-    &:is(:where(.group\/card):hover *) {
-      @media (hover: hover) {
-        background-color: color-mix(in srgb, #2596be 10%, transparent);
-        @supports (color: color-mix(in lab, red, red)) {
-          background-color: color-mix(in oklab, var(--color-secondary) 10%, transparent);
-        }
-      }
-    }
-  }
   .group-\[\.is-active\]\:-translate-y-2 {
     &:is(:where(.group):is(.is-active) *) {
       --tw-translate-y: calc(var(--spacing) * -2);
@@ -1355,13 +1239,6 @@ Text Domain: doctor-cabello
   .group-\[\.is-active\]\:opacity-0 {
     &:is(:where(.group):is(.is-active) *) {
       opacity: 0%;
-    }
-  }
-  .hover\:bg-primary {
-    &:hover {
-      @media (hover: hover) {
-        background-color: var(--color-primary);
-      }
     }
   }
   .hover\:bg-primary-hover {
@@ -1856,6 +1733,55 @@ Text Domain: doctor-cabello
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     transform: translateZ(0);
+  }
+  .flip-card {
+    background-color: transparent;
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    cursor: pointer;
+    perspective: 1000px;
+  }
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transform-style: preserve-3d;
+  }
+  .flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    overflow: hidden;
+    border-radius: var(--radius-2xl);
+  }
+  .flip-card-back {
+    transform: rotateY(180deg);
+  }
+  .status-badge {
+    position: absolute;
+    bottom: calc(var(--spacing) * 4);
+    left: calc(var(--spacing) * 4);
+    z-index: 20;
+    border-radius: var(--radius-full);
+    background-color: color-mix(in srgb, #000 50%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-black) 50%, transparent);
+    }
+    padding-inline: calc(var(--spacing) * 3);
+    padding-block: calc(var(--spacing) * 1);
+    font-size: 10px;
+    --tw-font-weight: var(--font-weight-bold);
+    font-weight: var(--font-weight-bold);
+    --tw-tracking: var(--tracking-widest);
+    letter-spacing: var(--tracking-widest);
+    color: var(--color-white);
+    text-transform: uppercase;
+    --tw-backdrop-blur: blur(var(--blur-md));
+    -webkit-backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
+    backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
   }
 }
 @property --tw-translate-x {

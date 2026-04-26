@@ -71,6 +71,45 @@ document.addEventListener("DOMContentLoaded", () => {
             // Actualizar valores cuando cambie el tamaño de la ventana
             ScrollTrigger.addEventListener("refreshInit", refreshValues);
         });
+
+        // 3. Lógica de Interacción Flip Card con GSAP
+        const flipCards = document.querySelectorAll(".flip-card");
+        flipCards.forEach((card) => {
+            const inner = card.querySelector(".flip-card-inner");
+            let flipped = false;
+
+            card.addEventListener("click", () => {
+                flipped = !flipped;
+                
+                gsap.to(inner, {
+                    rotationY: flipped ? 180 : 0,
+                    duration: 0.8,
+                    ease: "power2.inOut",
+                    overwrite: true
+                });
+            });
+
+            // Efecto Hover Tilt (Inclinación sutil para invitar al clic)
+            card.addEventListener("mouseenter", () => {
+                if (!flipped) {
+                    gsap.to(inner, {
+                        rotationY: 10,
+                        duration: 0.4,
+                        ease: "power1.out"
+                    });
+                }
+            });
+
+            card.addEventListener("mouseleave", () => {
+                if (!flipped) {
+                    gsap.to(inner, {
+                        rotationY: 0,
+                        duration: 0.4,
+                        ease: "power1.out"
+                    });
+                }
+            });
+        });
     };
 
     initGallery();
