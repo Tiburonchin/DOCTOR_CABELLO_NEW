@@ -1,0 +1,168 @@
+/*!
+Theme Name: Doctor Cabello Theme
+Theme URI: http://example.com/
+Author: Doctor Cabello
+Author URI: http://example.com/
+Description: Theme for Doctor Cabello clinics.
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: doctor-cabello
+*/
+
+@import "tailwindcss";
+
+@theme {
+    /* 1. Base RGB Values (Esencial para opacidades dinámicas en Tailwind v4) */
+    --rgb-primary: 36, 80, 176;       /* #2450b0 */
+    --rgb-secondary: 37, 150, 190;    /* #2596be */
+    --rgb-dark: 15, 23, 42;           /* #0f172a - Optical Black */
+    --rgb-white: 255, 255, 255;
+
+    /* 2. Brand Colors */
+    --color-primary: #2450b0;
+    --color-primary-light: #3668c4;
+    --color-primary-dark: #1a3d8f;
+    --color-primary-hover: #1d3f94;
+
+    --color-secondary: #2596be;
+    --color-secondary-light: #3db4d8;
+    --color-secondary-dark: #1a7899;
+    --color-secondary-hover: #1e7ca0;
+
+    /* 3. Neutrals & Surfaces (Escala de grises moderna para UI médica) */
+    --color-white: #ffffff;
+    --color-gray-50: #f8fafc; /* Background principal súper limpio */
+    --color-gray-100: #f1f5f9; /* Background secundario (cards) */
+    --color-gray-200: #e2e8f0; /* Bordes suaves */
+    --color-gray-300: #cbd5e1; /* Bordes fuertes */
+    --color-gray-400: #94a3b8; /* Iconos inactivos */
+    --color-gray-600: #475569; /* Textos secundarios / Párrafos */
+    --color-gray-900: #0f172a; /* Títulos principales (Nunca #000000) */
+
+    /* 4. Semantic Mapping */
+    --color-background: var(--color-gray-50);
+    --color-text: var(--color-gray-600);
+    --text-primary: var(--color-gray-900);
+    --text-secondary: var(--color-gray-600);
+    --text-inverse: var(--color-white);
+    --text-accent: var(--color-primary);
+
+    /* 5. Gradients */
+    --gradient-primary: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+    --gradient-surface: linear-gradient(180deg, var(--color-white), var(--color-gray-50));
+
+    /* 6. Typography - Font Families */
+    --font-sans: "Poppins", system-ui, -apple-system, sans-serif;
+    --font-display: "Outfit", var(--font-sans);
+
+    /* 7. Typography - Hierarchy (Escala armónica en REM) */
+    --text-xs: 0.75rem;     /* 12px - Labels pequeños */
+    --text-sm: 0.875rem;    /* 14px - Botones secundarios */
+    --text-base: 1rem;      /* 16px - Párrafos base */
+    --text-lg: 1.125rem;    /* 18px - Párrafos destacados */
+    --text-xl: 1.25rem;     /* 20px - Subtítulos pequeños (H4) */
+    --text-2xl: 1.5rem;     /* 24px - Títulos de sección (H3) */
+    --text-3xl: 2rem;       /* 32px - Títulos importantes (H2) */
+    --text-4xl: 2.5rem;     /* 40px - Título de página (H1 Mobile/Tablet) */
+    --text-5xl: 3.5rem;     /* 56px - Título principal Hero (H1 Desktop) */
+
+    /* 8. Line Heights (Interlineado) */
+    --leading-none: 1;
+    --leading-tight: 1.25;  /* Para Títulos (H1, H2, H3) */
+    --leading-normal: 1.5;  /* Para Párrafos legibles */
+    --leading-relaxed: 1.625;
+
+    /* 9. Borders & Radii */
+    --radius-sm: 0.5rem;    /* 8px */
+    --radius-md: 0.75rem;   /* 12px */
+    --radius-lg: 1rem;      /* 16px - Ideal para Cards médicas */
+    --radius-xl: 1.5rem;    /* 24px */
+    --radius-full: 9999px;  /* Botones pill */
+
+    /* 10. Shadows (Optimizadas para rendimiento y elegancia) */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05); /* Botones */
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.05); /* Cards */
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.05); /* Modales */
+    --shadow-primary-glow: 0 10px 25px -5px rgba(36, 80, 176, 0.4);
+    --shadow-secondary-glow: 0 8px 20px -4px rgba(37, 150, 190, 0.5);
+
+    /* 11. Z-Index Architecture (Adiós al z-index: 99999) */
+    --z-negative: -1;      /* Para fondos y decoraciones */
+    --z-elevate: 10;       /* Para cards sobre fondos */
+    --z-dropdown: 40;      /* Menús desplegables */
+    --z-header: 50;        /* Header sticky */
+    --z-modal: 100;        /* Popups / Formularios de reserva */
+    --z-transition: 200;   /* Para la transición de página */
+    --z-toast: 999;        /* Notificaciones de éxito/error */
+}
+
+@layer base {
+body {
+    @apply bg-background text-text;
+    scroll-behavior: auto; /* Desactivar smooth nativo para control GSAP */
+}
+}
+
+@layer components {
+    /* ========================================
+      SHAPE OVERLAYS (GSAP Page Transition)
+    ========================================
+    */
+    .shape-overlays {
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: var(--z-transition);
+        pointer-events: none;
+    }
+
+    .shape-overlays.is-opened {
+        pointer-events: auto;
+    }
+
+    .shape-overlays__path:nth-child(1) {
+        fill: url(#gradient1);
+    }
+
+    .shape-overlays__path:nth-child(2) {
+        fill: url(#gradient2);
+    }
+
+    /* Nav links activos (General style - For other navs if needed) */
+    .nav-link {
+        @apply relative transition-colors duration-300;
+        color: var(--color-gray-600);
+    }
+    .nav-link::after {
+        content: '';
+        @apply absolute bottom-[-4px] left-0 h-[2px] bg-primary transition-all duration-300;
+        width: 0%;
+    }
+    .nav-link:hover {
+        @apply text-primary;
+    }
+    .nav-link.active {
+        @apply text-primary font-medium;
+    }
+    .nav-link.active::after {
+        width: 100%;
+    }
+
+    /* Floating Header Nav Links (Exact Match with Snippet) */
+    #main-header .nav-link {
+        @apply px-6 py-2 rounded-full text-gray-600 hover:bg-gray-50 hover:text-primary font-medium text-base transition-all duration-300;
+    }
+    
+    /* Remove underline for floating header links */
+    #main-header .nav-link::after {
+        display: none;
+    }
+
+    #main-header .nav-link.active {
+        background-color: #eff6ff; /* blue-50 */
+        @apply text-primary font-medium;
+    }
+}
