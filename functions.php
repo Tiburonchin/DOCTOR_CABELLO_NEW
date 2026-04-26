@@ -35,7 +35,7 @@ function doctor_cabello_scripts() {
 
     // Conditional scripts for front-page
     if ( is_front_page() ) {
-        wp_enqueue_script( 'hero-anim', get_template_directory_uri() . '/assets/js/inicio-sections/hero-anim.js', array(), _S_VERSION, true );
+        wp_enqueue_script( 'hero-anim', get_template_directory_uri() . '/assets/js/inicio-sections/hero-anim.js', array('gsap', 'gsap-scrolltrigger'), _S_VERSION, true );
         wp_enqueue_script( 'ribbon-logic', get_template_directory_uri() . '/assets/js/inicio-sections/ribbon-logic.js', array(), _S_VERSION, true );
         // Add others as needed...
     }

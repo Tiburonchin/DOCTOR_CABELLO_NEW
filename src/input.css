@@ -99,8 +99,9 @@ Text Domain: doctor-cabello
 
 @layer base {
 body {
-    @apply bg-background text-text;
+    @apply bg-gray-900 text-white antialiased overflow-x-hidden;
     scroll-behavior: auto; /* Desactivar smooth nativo para control GSAP */
+    -moz-osx-font-smoothing: grayscale;
 }
 }
 
@@ -166,47 +167,49 @@ body {
         @apply text-primary font-medium;
     }
 
-    /* ========================================
-      HEADER RETRACTED STATE (Scroll Logic)
-    ========================================
-    */
-    #main-header.header-retracted {
-        @apply top-2;
-    }
-
-    #main-header.header-retracted > div {
-        @apply max-w-2xl py-2 px-6 bg-primary shadow-primary-glow border-none;
-        display: flex !important;
-        justify-content: space-between !important;
-        align-items: center;
-    }
-
-    /* Text & Logo colors in retracted state */
-    #main-header.header-retracted .font-display {
-        @apply text-white;
-    }
-    #main-header.header-retracted .group div {
-        @apply bg-white text-primary;
-    }
-
-    /* Hide elements in retracted state */
-    #main-header.header-retracted nav,
-    #main-header.header-retracted .header-socials {
-        @apply hidden;
-    }
-
-    /* Show hamburger in retracted state on desktop */
-    #main-header.header-retracted #mobile-menu-toggle {
-        @apply flex;
-    }
-
-    /* Retracted Hamburger colors */
-    #main-header.header-retracted #mobile-menu-toggle span {
-        @apply bg-white;
-    }
-
     /* Smooth transitions for retraction */
     #main-header > div {
         transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ========================================
+      HERO SECTION COMPONENTS
+    ========================================
+    */
+
+    /* Máscara para la entrada de texto cinematográfica de GSAP */
+    .text-mask {
+        @apply overflow-hidden block pb-[0.1em];
+    }
+
+    /* Botón Degradado (Inspirado en la referencia) */
+    .gradient-btn {
+        @apply transition-all duration-300;
+        background-size: 200% 100%;
+        background-image: linear-gradient(
+            90deg, 
+            var(--color-primary) 0%, 
+            var(--color-secondary) 50%, 
+            var(--color-primary) 100%
+        );
+    }
+
+    .gradient-btn:hover {
+        background-position: 100% 0;
+        @apply scale-105 shadow-secondary-glow;
+    }
+
+    /* Botón Secundario (Glassmorphism) */
+    .glass-btn {
+        @apply bg-white/10 backdrop-blur-md border border-white/20 transition-all duration-300;
+    }
+
+    .glass-btn:hover {
+        @apply bg-white/20 scale-105;
+    }
+    
+    /* Evitar saltos de línea molestos al cambiar texto animado */
+    .scramble-container {
+        @apply min-h-[120px] md:min-h-[100px] flex flex-col justify-start;
     }
 }

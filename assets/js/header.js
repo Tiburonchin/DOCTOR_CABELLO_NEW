@@ -60,33 +60,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ==========================================
-    // 3. Header visibility & Retraction
+    // 3. Header visibility (Static/Always visible)
     // ==========================================
-    let lastScroll = 0;
-    const handleHeaderState = () => {
-        const currentScroll = window.pageYOffset;
-        
-        // 1. Retraction Logic (Shrink/Change style on scroll)
-        if (currentScroll > 50) {
-            header.classList.add('header-retracted');
-        } else {
-            header.classList.remove('header-retracted');
-        }
-
-        // 2. Hide/Show Logic
-        if (currentScroll <= 0) {
-            gsap.to(header, { y: 0, opacity: 1, duration: 0.3 });
-            return;
-        }
-        if (currentScroll > lastScroll && currentScroll > 200) {
-            gsap.to(header, { y: -150, opacity: 0, duration: 0.4, ease: "power2.inOut" });
-        } else {
-            gsap.to(header, { y: 0, opacity: 1, duration: 0.4, ease: "power2.out" });
-        }
-        lastScroll = currentScroll;
-    };
-
-    window.addEventListener('scroll', handleHeaderState);
+    // Eliminamos la lógica de retracción y ocultamiento para mantener el header constante.
 
     // ==========================================
     // 4. Mobile Menu Logic
