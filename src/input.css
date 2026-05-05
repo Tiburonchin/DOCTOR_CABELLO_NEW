@@ -487,9 +487,92 @@ Text Domain: doctor-cabello
     .tilt-card {
         transform-style: preserve-3d;
         transition: transform 0.1s ease-out;
+        position: relative;
+        /* Variables for mouse position */
+        --mouse-x: 50%;
+        --mouse-y: 50%;
+    }
+
+    .tilt-card::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: 2rem; /* Coincide con rounded-[2rem] */
+        background: radial-gradient(
+            circle 250px at var(--mouse-x) var(--mouse-y),
+            rgba(37, 150, 190, 0.25),
+            transparent 80%
+        );
+        opacity: 0;
+        transition: opacity 0.5s ease;
+        pointer-events: none;
+        z-index: 5;
+    }
+
+    .tilt-card:hover::before {
+        opacity: 1;
     }
 
     .inner-content {
-        transform: translateZ(20px);
+        transform: translateZ(30px); /* Un poco más de profundidad */
+        position: relative;
+        z-index: 10;
+    }
+
+    /* --- SECCIÓN TESTIMONIOS --- */
+    .testimonial-wrapper {
+        display: grid;
+        grid-template-columns: 1fr;
+        align-items: center;
+    }
+
+    .testimonial-item {
+        grid-area: 1 / 1 / 2 / 2;
+        visibility: hidden;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .testimonial-item.active {
+        visibility: visible;
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .testimonial-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: rgb(var(--color-gray-300));
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+
+    .testimonial-dot.active {
+        background-color: rgb(var(--color-primary-600));
+        width: 30px;
+        border-radius: 5px;
+    }
+
+    .progress-indicator {
+        transform-origin: left;
+        transform: scaleX(0);
+    }
+
+    /* FAQ */
+    .faq-item.active .faq-question {
+        color: rgb(var(--color-primary-600));
+    }
+
+    .faq-item.active .faq-icon {
+        background-color: rgb(var(--color-primary-600));
+        color: white;
+        transform: rotate(180deg);
+    }
+
+    .faq-answer {
+        height: 0;
+        overflow: hidden;
+        opacity: 0;
     }
 }

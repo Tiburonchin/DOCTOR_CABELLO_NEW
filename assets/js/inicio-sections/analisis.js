@@ -58,6 +58,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 const rotateX = ((y - centerY) / centerY) * -10;
                 const rotateY = ((x - centerX) / centerX) * 10;
 
+                // Actualizamos las variables CSS para el efecto de luz (Glow)
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+
                 gsap.to(card, {
                     rotateX: rotateX,
                     rotateY: rotateY,
@@ -68,6 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             card.addEventListener('mouseleave', () => {
+                // Al salir, restauramos la rotación (el glow se desvanece por CSS hover)
                 gsap.to(card, {
                     rotateX: 0,
                     rotateY: 0,

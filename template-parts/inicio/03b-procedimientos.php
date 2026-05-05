@@ -9,16 +9,16 @@
 <!-- SECCIÓN DE TRATAMIENTOS VERTICALES -->
 <section id="procedimientos-section" class="py-16 md:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-elevate overflow-visible">
     
-    <!-- Header de la sección (Centrado superior) -->
-    <div class="mb-12 text-center max-w-3xl mx-auto">
-        <span class="anim-fade-up inline-block bg-primary-50 text-primary-600 font-semibold tracking-wider uppercase text-xs md:text-sm px-4 py-1.5 rounded-full mb-4">
+    <!-- CABECERA (Estilo Galería) -->
+    <div class="text-center space-y-6 px-6 max-w-4xl mx-auto mb-16">
+        <div class="anim-fade-up inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/5 border border-primary/10 text-primary-dark text-xs font-semibold uppercase tracking-widest mb-2 mx-auto">
             Innovación y Resultados
-        </span>
-        <h2 class="anim-fade-up text-3xl md:text-5xl font-bold text-main leading-tight mb-4">
-            Descubre nuestros <span class="text-primary-600">Tratamientos</span>
+        </div>
+        <h2 class="anim-fade-up text-4xl md:text-6xl font-display font-bold text-gray-900 leading-tight">
+            Descubre nuestros <span class="inline-block text-transparent bg-clip-text bg-gradient-to-r from-secondary to-primary">Tratamientos</span>
         </h2>
-        <p class="anim-fade-up text-muted text-lg">
-            Explora nuestra galería de casos y procedimientos. Resultados reales en manos de nuestros especialistas.
+        <p class="anim-fade-up text-gray-500 text-lg md:text-xl font-light max-w-2xl mx-auto leading-relaxed">
+            Explora nuestra galería de casos y procedimientos. Resultados reales en manos de nuestros especialistas para transformar tu imagen.
         </p>
     </div>
 

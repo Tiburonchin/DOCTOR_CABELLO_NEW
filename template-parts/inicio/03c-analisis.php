@@ -6,13 +6,17 @@
 
 <section id="analisis-paciente" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto overflow-visible">
     
-    <!-- CABECERA -->
-    <div class="text-center mb-20">
-        <h2 class="anim-header text-4xl md:text-5xl lg:text-6xl font-extrabold text-primary-800 tracking-tight mb-6">
-            Análisis de Candidato
+    <!-- CABECERA (Estilo Galería) -->
+    <div class="text-center space-y-6 px-6 max-w-4xl mx-auto mb-20">
+        <div class="anim-header inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/5 border border-primary/10 text-primary-dark text-xs font-semibold uppercase tracking-widest mb-2 mx-auto">
+            Evaluación de Precisión
+        </div>
+        <h2 class="anim-header text-4xl md:text-6xl font-display font-bold text-gray-900 leading-tight">
+            Análisis de <span class="inline-block text-transparent bg-clip-text bg-gradient-to-r from-secondary to-primary">Candidato Ideal</span>
         </h2>
-        <p class="anim-header text-muted text-lg md:text-xl max-w-3xl mx-auto">
-            No todos los casos son iguales. Utilizamos tecnología avanzada para determinar si eres el candidato ideal para recuperar tu imagen.
+        <p class="anim-header text-gray-500 text-lg md:text-xl font-light max-w-2xl mx-auto leading-relaxed">
+            No todos los casos son iguales. Utilizamos tecnología avanzada para determinar si eres el candidato ideal para recuperar tu imagen de forma definitiva.
+           
         </p>
     </div>
 

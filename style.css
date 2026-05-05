@@ -41,6 +41,7 @@ Text Domain: doctor-cabello
     --container-2xl: 42rem;
     --container-3xl: 48rem;
     --container-4xl: 56rem;
+    --container-5xl: 64rem;
     --container-6xl: 72rem;
     --container-7xl: 80rem;
     --text-xs: 0.75rem;
@@ -71,15 +72,17 @@ Text Domain: doctor-cabello
     --font-weight-semibold: 600;
     --font-weight-bold: 700;
     --font-weight-extrabold: 800;
+    --font-weight-black: 900;
     --tracking-tight: -0.025em;
     --tracking-wide: 0.025em;
-    --tracking-wider: 0.05em;
     --tracking-widest: 0.1em;
     --leading-tight: 1.25;
+    --leading-snug: 1.375;
     --leading-relaxed: 1.625;
     --radius-lg: 0.5rem;
     --radius-xl: 0.75rem;
     --radius-2xl: 1rem;
+    --radius-3xl: 1.5rem;
     --animate-pulse: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
     --animate-bounce: bounce 1s infinite;
     --blur-sm: 8px;
@@ -368,14 +371,29 @@ Text Domain: doctor-cabello
   .mx-auto {
     margin-inline: auto;
   }
+  .-mt-16 {
+    margin-top: calc(var(--spacing) * -16);
+  }
+  .mt-1 {
+    margin-top: calc(var(--spacing) * 1);
+  }
   .mt-4 {
     margin-top: calc(var(--spacing) * 4);
+  }
+  .mt-5 {
+    margin-top: calc(var(--spacing) * 5);
   }
   .mt-12 {
     margin-top: calc(var(--spacing) * 12);
   }
+  .mt-14 {
+    margin-top: calc(var(--spacing) * 14);
+  }
   .mt-auto {
     margin-top: auto;
+  }
+  .-mr-16 {
+    margin-right: calc(var(--spacing) * -16);
   }
   .mb-2 {
     margin-bottom: calc(var(--spacing) * 2);
@@ -401,11 +419,17 @@ Text Domain: doctor-cabello
   .mb-12 {
     margin-bottom: calc(var(--spacing) * 12);
   }
+  .mb-16 {
+    margin-bottom: calc(var(--spacing) * 16);
+  }
   .mb-20 {
     margin-bottom: calc(var(--spacing) * 20);
   }
   .ml-1 {
     margin-left: calc(var(--spacing) * 1);
+  }
+  .ml-3 {
+    margin-left: calc(var(--spacing) * 3);
   }
   .line-clamp-2 {
     overflow: hidden;
@@ -446,8 +470,14 @@ Text Domain: doctor-cabello
   .h-0\.5 {
     height: calc(var(--spacing) * 0.5);
   }
+  .h-1 {
+    height: calc(var(--spacing) * 1);
+  }
   .h-2 {
     height: calc(var(--spacing) * 2);
+  }
+  .h-2\.5 {
+    height: calc(var(--spacing) * 2.5);
   }
   .h-2\/3 {
     height: calc(2 / 3 * 100%);
@@ -491,6 +521,9 @@ Text Domain: doctor-cabello
   .h-32 {
     height: calc(var(--spacing) * 32);
   }
+  .h-64 {
+    height: calc(var(--spacing) * 64);
+  }
   .h-\[1px\] {
     height: 1px;
   }
@@ -506,6 +539,9 @@ Text Domain: doctor-cabello
   .h-screen {
     height: 100vh;
   }
+  .max-h-0 {
+    max-height: calc(var(--spacing) * 0);
+  }
   .min-h-screen {
     min-height: 100vh;
   }
@@ -514,6 +550,12 @@ Text Domain: doctor-cabello
   }
   .w-1\/2 {
     width: calc(1 / 2 * 100%);
+  }
+  .w-2 {
+    width: calc(var(--spacing) * 2);
+  }
+  .w-2\.5 {
+    width: calc(var(--spacing) * 2.5);
   }
   .w-3 {
     width: calc(var(--spacing) * 3);
@@ -557,6 +599,9 @@ Text Domain: doctor-cabello
   .w-40 {
     width: calc(var(--spacing) * 40);
   }
+  .w-64 {
+    width: calc(var(--spacing) * 64);
+  }
   .w-fit {
     width: fit-content;
   }
@@ -571,6 +616,9 @@ Text Domain: doctor-cabello
   }
   .max-w-4xl {
     max-width: var(--container-4xl);
+  }
+  .max-w-5xl {
+    max-width: var(--container-5xl);
   }
   .max-w-6xl {
     max-width: var(--container-6xl);
@@ -627,6 +675,12 @@ Text Domain: doctor-cabello
   .translate-y-8 {
     --tw-translate-y: calc(var(--spacing) * 8);
     translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
+  .scale-125 {
+    --tw-scale-x: 125%;
+    --tw-scale-y: 125%;
+    --tw-scale-z: 125%;
+    scale: var(--tw-scale-x) var(--tw-scale-y);
   }
   .transform {
     transform: var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,);
@@ -706,11 +760,25 @@ Text Domain: doctor-cabello
   .gap-12 {
     gap: calc(var(--spacing) * 12);
   }
+  .space-y-2 {
+    :where(& > :not(:last-child)) {
+      --tw-space-y-reverse: 0;
+      margin-block-start: calc(calc(var(--spacing) * 2) * var(--tw-space-y-reverse));
+      margin-block-end: calc(calc(var(--spacing) * 2) * calc(1 - var(--tw-space-y-reverse)));
+    }
+  }
   .space-y-6 {
     :where(& > :not(:last-child)) {
       --tw-space-y-reverse: 0;
       margin-block-start: calc(calc(var(--spacing) * 6) * var(--tw-space-y-reverse));
       margin-block-end: calc(calc(var(--spacing) * 6) * calc(1 - var(--tw-space-y-reverse)));
+    }
+  }
+  .space-y-8 {
+    :where(& > :not(:last-child)) {
+      --tw-space-y-reverse: 0;
+      margin-block-start: calc(calc(var(--spacing) * 8) * var(--tw-space-y-reverse));
+      margin-block-end: calc(calc(var(--spacing) * 8) * calc(1 - var(--tw-space-y-reverse)));
     }
   }
   .justify-self-center {
@@ -733,6 +801,9 @@ Text Domain: doctor-cabello
   }
   .rounded-2xl {
     border-radius: var(--radius-2xl);
+  }
+  .rounded-3xl {
+    border-radius: var(--radius-3xl);
   }
   .rounded-\[2\.5rem\] {
     border-radius: 2.5rem;
@@ -780,6 +851,18 @@ Text Domain: doctor-cabello
   }
   .border-gray-100 {
     border-color: rgb(var(--color-gray-100) / 1);
+  }
+  .border-gray-100\/50 {
+    border-color: color-mix(in srgb, rgb(rgb(var(--color-gray-100) / 1) / 1) 50%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      border-color: color-mix(in oklab, rgb(var(--color-gray-100) / 1) 50%, transparent);
+    }
+  }
+  .border-gray-100\/60 {
+    border-color: color-mix(in srgb, rgb(rgb(var(--color-gray-100) / 1) / 1) 60%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      border-color: color-mix(in oklab, rgb(var(--color-gray-100) / 1) 60%, transparent);
+    }
   }
   .border-gray-200 {
     border-color: rgb(var(--color-gray-200) / 1);
@@ -847,8 +930,26 @@ Text Domain: doctor-cabello
   .bg-gray-50 {
     background-color: var(--color-gray-50);
   }
+  .bg-gray-50\/50 {
+    background-color: color-mix(in srgb, oklch(98.5% 0.002 247.839) 50%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-gray-50) 50%, transparent);
+    }
+  }
+  .bg-gray-100 {
+    background-color: rgb(var(--color-gray-100) / 1);
+  }
+  .bg-gray-100\/50 {
+    background-color: color-mix(in srgb, rgb(rgb(var(--color-gray-100) / 1) / 1) 50%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, rgb(var(--color-gray-100) / 1) 50%, transparent);
+    }
+  }
   .bg-gray-200 {
     background-color: rgb(var(--color-gray-200) / 1);
+  }
+  .bg-gray-300 {
+    background-color: rgb(var(--color-gray-300) / 1);
   }
   .bg-gray-400 {
     background-color: rgb(var(--color-gray-400) / 1);
@@ -862,11 +963,32 @@ Text Domain: doctor-cabello
       background-color: color-mix(in oklab, var(--color-gray-900) 60%, transparent);
     }
   }
+  .bg-green-500 {
+    background-color: var(--color-green-500);
+  }
   .bg-primary {
     background-color: rgb(var(--color-primary-600) / 1);
   }
   .bg-primary-50 {
     background-color: rgb(var(--color-primary-50) / 1);
+  }
+  .bg-primary-50\/50 {
+    background-color: color-mix(in srgb, rgb(rgb(var(--color-primary-50) / 1) / 1) 50%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, rgb(var(--color-primary-50) / 1) 50%, transparent);
+    }
+  }
+  .bg-primary-100 {
+    background-color: rgb(var(--color-primary-100) / 1);
+  }
+  .bg-primary-100\/50 {
+    background-color: color-mix(in srgb, rgb(rgb(var(--color-primary-100) / 1) / 1) 50%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, rgb(var(--color-primary-100) / 1) 50%, transparent);
+    }
+  }
+  .bg-primary-500 {
+    background-color: rgb(var(--color-primary-500) / 1);
   }
   .bg-primary-600 {
     background-color: rgb(var(--color-primary-600) / 1);
@@ -984,6 +1106,10 @@ Text Domain: doctor-cabello
     --tw-gradient-from: rgb(var(--color-primary-600) / 1);
     --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
   }
+  .from-primary-50 {
+    --tw-gradient-from: rgb(var(--color-primary-50) / 1);
+    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+  }
   .from-primary-600 {
     --tw-gradient-from: rgb(var(--color-primary-600) / 1);
     --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
@@ -1073,8 +1199,16 @@ Text Domain: doctor-cabello
     --tw-gradient-to: rgb(var(--color-primary-800) / 1);
     --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
   }
+  .to-secondary-500 {
+    --tw-gradient-to: rgb(var(--color-secondary-500) / 1);
+    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+  }
   .to-transparent {
     --tw-gradient-to: transparent;
+    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+  }
+  .to-white {
+    --tw-gradient-to: var(--color-white);
     --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
   }
   .bg-clip-text {
@@ -1094,6 +1228,9 @@ Text Domain: doctor-cabello
   }
   .p-2 {
     padding: calc(var(--spacing) * 2);
+  }
+  .p-3 {
+    padding: calc(var(--spacing) * 3);
   }
   .p-4 {
     padding: calc(var(--spacing) * 4);
@@ -1158,8 +1295,17 @@ Text Domain: doctor-cabello
   .pt-8 {
     padding-top: calc(var(--spacing) * 8);
   }
+  .pr-4 {
+    padding-right: calc(var(--spacing) * 4);
+  }
+  .pr-6 {
+    padding-right: calc(var(--spacing) * 6);
+  }
   .pb-4 {
     padding-bottom: calc(var(--spacing) * 4);
+  }
+  .pb-6 {
+    padding-bottom: calc(var(--spacing) * 6);
   }
   .pb-8 {
     padding-bottom: calc(var(--spacing) * 8);
@@ -1172,6 +1318,9 @@ Text Domain: doctor-cabello
   }
   .text-center {
     text-align: center;
+  }
+  .text-left {
+    text-align: left;
   }
   .font-display {
     font-family: Outfit, sans-serif;
@@ -1232,9 +1381,17 @@ Text Domain: doctor-cabello
     --tw-leading: var(--leading-relaxed);
     line-height: var(--leading-relaxed);
   }
+  .leading-snug {
+    --tw-leading: var(--leading-snug);
+    line-height: var(--leading-snug);
+  }
   .leading-tight {
     --tw-leading: var(--leading-tight);
     line-height: var(--leading-tight);
+  }
+  .font-black {
+    --tw-font-weight: var(--font-weight-black);
+    font-weight: var(--font-weight-black);
   }
   .font-bold {
     --tw-font-weight: var(--font-weight-bold);
@@ -1272,10 +1429,6 @@ Text Domain: doctor-cabello
     --tw-tracking: var(--tracking-wide);
     letter-spacing: var(--tracking-wide);
   }
-  .tracking-wider {
-    --tw-tracking: var(--tracking-wider);
-    letter-spacing: var(--tracking-wider);
-  }
   .tracking-widest {
     --tw-tracking: var(--tracking-widest);
     letter-spacing: var(--tracking-widest);
@@ -1310,8 +1463,14 @@ Text Domain: doctor-cabello
   .text-primary {
     color: rgb(var(--color-primary-600) / 1);
   }
+  .text-primary-500 {
+    color: rgb(var(--color-primary-500) / 1);
+  }
   .text-primary-600 {
     color: rgb(var(--color-primary-600) / 1);
+  }
+  .text-primary-700 {
+    color: rgb(var(--color-primary-700) / 1);
   }
   .text-primary-800 {
     color: rgb(var(--color-primary-800) / 1);
@@ -1370,6 +1529,9 @@ Text Domain: doctor-cabello
   .opacity-20 {
     opacity: 20%;
   }
+  .opacity-60 {
+    opacity: 60%;
+  }
   .opacity-80 {
     opacity: 80%;
   }
@@ -1378,9 +1540,6 @@ Text Domain: doctor-cabello
   }
   .opacity-95 {
     opacity: 95%;
-  }
-  .opacity-100 {
-    opacity: 100%;
   }
   .mix-blend-overlay {
     mix-blend-mode: overlay;
@@ -1431,10 +1590,34 @@ Text Domain: doctor-cabello
       --tw-shadow-color: color-mix(in oklab, rgb(var(--color-primary-600) / 1) var(--tw-shadow-alpha), transparent);
     }
   }
+  .shadow-primary-600\/20 {
+    --tw-shadow-color: color-mix(in srgb, rgb(rgb(var(--color-primary-600) / 1) / 1) 20%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      --tw-shadow-color: color-mix(in oklab, color-mix(in oklab, rgb(var(--color-primary-600) / 1) 20%, transparent) var(--tw-shadow-alpha), transparent);
+    }
+  }
   .shadow-primary-600\/30 {
     --tw-shadow-color: color-mix(in srgb, rgb(rgb(var(--color-primary-600) / 1) / 1) 30%, transparent);
     @supports (color: color-mix(in lab, red, red)) {
       --tw-shadow-color: color-mix(in oklab, color-mix(in oklab, rgb(var(--color-primary-600) / 1) 30%, transparent) var(--tw-shadow-alpha), transparent);
+    }
+  }
+  .shadow-primary-900 {
+    --tw-shadow-color: rgb(rgb(var(--color-primary-900) / 1) / 1);
+    @supports (color: color-mix(in lab, red, red)) {
+      --tw-shadow-color: color-mix(in oklab, rgb(var(--color-primary-900) / 1) var(--tw-shadow-alpha), transparent);
+    }
+  }
+  .shadow-primary-900\/5 {
+    --tw-shadow-color: color-mix(in srgb, rgb(rgb(var(--color-primary-900) / 1) / 1) 5%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      --tw-shadow-color: color-mix(in oklab, color-mix(in oklab, rgb(var(--color-primary-900) / 1) 5%, transparent) var(--tw-shadow-alpha), transparent);
+    }
+  }
+  .shadow-primary-900\/10 {
+    --tw-shadow-color: color-mix(in srgb, rgb(rgb(var(--color-primary-900) / 1) / 1) 10%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      --tw-shadow-color: color-mix(in oklab, color-mix(in oklab, rgb(var(--color-primary-900) / 1) 10%, transparent) var(--tw-shadow-alpha), transparent);
     }
   }
   .outline {
@@ -1579,6 +1762,13 @@ Text Domain: doctor-cabello
       }
     }
   }
+  .group-hover\:text-primary-600 {
+    &:is(:where(.group):hover *) {
+      @media (hover: hover) {
+        color: rgb(var(--color-primary-600) / 1);
+      }
+    }
+  }
   .group-hover\:opacity-60 {
     &:is(:where(.group):hover *) {
       @media (hover: hover) {
@@ -1638,10 +1828,23 @@ Text Domain: doctor-cabello
       opacity: 0%;
     }
   }
+  .last\:border-0 {
+    &:last-child {
+      border-style: var(--tw-border-style);
+      border-width: 0px;
+    }
+  }
   .hover\:border-primary-500 {
     &:hover {
       @media (hover: hover) {
         border-color: rgb(var(--color-primary-500) / 1);
+      }
+    }
+  }
+  .hover\:bg-gray-400 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: rgb(var(--color-gray-400) / 1);
       }
     }
   }
@@ -1804,6 +2007,11 @@ Text Domain: doctor-cabello
       padding: calc(var(--spacing) * 12);
     }
   }
+  .md\:p-14 {
+    @media (width >= 48rem) {
+      padding: calc(var(--spacing) * 14);
+    }
+  }
   .md\:px-16 {
     @media (width >= 48rem) {
       padding-inline: calc(var(--spacing) * 16);
@@ -1847,12 +2055,6 @@ Text Domain: doctor-cabello
     @media (width >= 48rem) {
       font-size: var(--text-lg);
       line-height: var(--tw-leading, var(--text-lg--line-height));
-    }
-  }
-  .md\:text-sm {
-    @media (width >= 48rem) {
-      font-size: var(--text-sm);
-      line-height: var(--tw-leading, var(--text-sm--line-height));
     }
   }
   .md\:text-xl {
@@ -1906,6 +2108,16 @@ Text Domain: doctor-cabello
       height: auto;
     }
   }
+  .lg\:w-2\/5 {
+    @media (width >= 64rem) {
+      width: calc(2 / 5 * 100%);
+    }
+  }
+  .lg\:w-3\/5 {
+    @media (width >= 64rem) {
+      width: calc(3 / 5 * 100%);
+    }
+  }
   .lg\:w-5\/12 {
     @media (width >= 64rem) {
       width: calc(5 / 12 * 100%);
@@ -1946,6 +2158,18 @@ Text Domain: doctor-cabello
       gap: calc(var(--spacing) * 16);
     }
   }
+  .lg\:border-r {
+    @media (width >= 64rem) {
+      border-right-style: var(--tw-border-style);
+      border-right-width: 1px;
+    }
+  }
+  .lg\:border-b-0 {
+    @media (width >= 64rem) {
+      border-bottom-style: var(--tw-border-style);
+      border-bottom-width: 0px;
+    }
+  }
   .lg\:px-0 {
     @media (width >= 64rem) {
       padding-inline: calc(var(--spacing) * 0);
@@ -1980,12 +2204,6 @@ Text Domain: doctor-cabello
     @media (width >= 64rem) {
       font-size: var(--text-5xl);
       line-height: var(--tw-leading, var(--text-5xl--line-height));
-    }
-  }
-  .lg\:text-6xl {
-    @media (width >= 64rem) {
-      font-size: var(--text-6xl);
-      line-height: var(--tw-leading, var(--text-6xl--line-height));
     }
   }
   .lg\:text-\[5\.5rem\] {
@@ -2508,9 +2726,74 @@ Text Domain: doctor-cabello
   .tilt-card {
     transform-style: preserve-3d;
     transition: transform 0.1s ease-out;
+    position: relative;
+    --mouse-x: 50%;
+    --mouse-y: 50%;
+  }
+  .tilt-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 2rem;
+    background: radial-gradient( circle 250px at var(--mouse-x) var(--mouse-y), rgba(37, 150, 190, 0.25), transparent 80% );
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+    z-index: 5;
+  }
+  .tilt-card:hover::before {
+    opacity: 1;
   }
   .inner-content {
-    transform: translateZ(20px);
+    transform: translateZ(30px);
+    position: relative;
+    z-index: 10;
+  }
+  .testimonial-wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+  }
+  .testimonial-item {
+    grid-area: 1 / 1 / 2 / 2;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .testimonial-item.active {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .testimonial-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgb(var(--color-gray-300));
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  .testimonial-dot.active {
+    background-color: rgb(var(--color-primary-600));
+    width: 30px;
+    border-radius: 5px;
+  }
+  .progress-indicator {
+    transform-origin: left;
+    transform: scaleX(0);
+  }
+  .faq-item.active .faq-question {
+    color: rgb(var(--color-primary-600));
+  }
+  .faq-item.active .faq-icon {
+    background-color: rgb(var(--color-primary-600));
+    color: white;
+    transform: rotate(180deg);
+  }
+  .faq-answer {
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
   }
 }
 @property --tw-translate-x {
@@ -2527,6 +2810,21 @@ Text Domain: doctor-cabello
   syntax: "*";
   inherits: false;
   initial-value: 0;
+}
+@property --tw-scale-x {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
+}
+@property --tw-scale-y {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
+}
+@property --tw-scale-z {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
 }
 @property --tw-rotate-x {
   syntax: "*";
@@ -2775,21 +3073,6 @@ Text Domain: doctor-cabello
   syntax: "*";
   inherits: false;
 }
-@property --tw-scale-x {
-  syntax: "*";
-  inherits: false;
-  initial-value: 1;
-}
-@property --tw-scale-y {
-  syntax: "*";
-  inherits: false;
-  initial-value: 1;
-}
-@property --tw-scale-z {
-  syntax: "*";
-  inherits: false;
-  initial-value: 1;
-}
 @keyframes pulse {
   50% {
     opacity: 0.5;
@@ -2811,6 +3094,9 @@ Text Domain: doctor-cabello
       --tw-translate-x: 0;
       --tw-translate-y: 0;
       --tw-translate-z: 0;
+      --tw-scale-x: 1;
+      --tw-scale-y: 1;
+      --tw-scale-z: 1;
       --tw-rotate-x: initial;
       --tw-rotate-y: initial;
       --tw-rotate-z: initial;
@@ -2868,9 +3154,6 @@ Text Domain: doctor-cabello
       --tw-backdrop-saturate: initial;
       --tw-backdrop-sepia: initial;
       --tw-duration: initial;
-      --tw-scale-x: 1;
-      --tw-scale-y: 1;
-      --tw-scale-z: 1;
     }
   }
 }

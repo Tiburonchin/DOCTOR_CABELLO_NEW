@@ -44,6 +44,8 @@ function doctor_cabello_scripts() {
         wp_enqueue_script( 'galeria-horizontal', get_template_directory_uri() . '/assets/js/inicio-sections/galeria.js', array('gsap', 'gsap-scrolltrigger', 'lenis'), _S_VERSION, true );
         wp_enqueue_script( 'procedimientos-verticales', get_template_directory_uri() . '/assets/js/inicio-sections/procedimientos.js', array('gsap', 'gsap-scrolltrigger'), _S_VERSION, true );
         wp_enqueue_script( 'analisis-candidato', get_template_directory_uri() . '/assets/js/inicio-sections/analisis.js', array('gsap', 'gsap-scrolltrigger'), _S_VERSION, true );
+        wp_enqueue_script( 'testimonios-slider', get_template_directory_uri() . '/assets/js/inicio-sections/testimonios.js', array('gsap'), _S_VERSION, true );
+        wp_enqueue_script( 'faq-accordion', get_template_directory_uri() . '/assets/js/inicio-sections/faq.js', array('gsap'), _S_VERSION, true );
         
         // Lucide Icons
         wp_enqueue_script( 'lucide-icons', 'https://unpkg.com/lucide@latest', array(), 'latest', true );

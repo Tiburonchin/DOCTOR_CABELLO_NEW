@@ -16,9 +16,10 @@ get_header();
         '03-galeria',
         '03b-procedimientos',
         '03c-analisis',
+        '06-testimonios',
+        '07-faq',
         '03-nosotros',
         '05-acerca',
-        '06-testimonios',
         '04-contacto',
         '07-conclusion',
     );
