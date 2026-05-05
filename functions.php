@@ -39,8 +39,14 @@ function doctor_cabello_scripts() {
     // Conditional scripts for front-page
     if ( is_front_page() ) {
         wp_enqueue_script( 'hero-anim', get_template_directory_uri() . '/assets/js/inicio-sections/hero-anim.js', array('gsap', 'gsap-scrolltrigger'), _S_VERSION, true );
+        wp_enqueue_script( 'ribbon-anim', get_template_directory_uri() . '/assets/js/inicio-sections/ribbon.js', array('gsap', 'gsap-scrolltrigger'), _S_VERSION, true );
         wp_enqueue_script( 'tratamientos-presentacion', get_template_directory_uri() . '/assets/js/inicio-sections/tratamientos.js', array('gsap', 'gsap-scrolltrigger'), _S_VERSION, true );
         wp_enqueue_script( 'galeria-horizontal', get_template_directory_uri() . '/assets/js/inicio-sections/galeria.js', array('gsap', 'gsap-scrolltrigger', 'lenis'), _S_VERSION, true );
+        wp_enqueue_script( 'procedimientos-verticales', get_template_directory_uri() . '/assets/js/inicio-sections/procedimientos.js', array('gsap', 'gsap-scrolltrigger'), _S_VERSION, true );
+        wp_enqueue_script( 'analisis-candidato', get_template_directory_uri() . '/assets/js/inicio-sections/analisis.js', array('gsap', 'gsap-scrolltrigger'), _S_VERSION, true );
+        
+        // Lucide Icons
+        wp_enqueue_script( 'lucide-icons', 'https://unpkg.com/lucide@latest', array(), 'latest', true );
     }
 }
 add_action( 'wp_enqueue_scripts', 'doctor_cabello_scripts' );

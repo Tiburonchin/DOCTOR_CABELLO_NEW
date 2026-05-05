@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const header = document.getElementById('main-header');
     const navLinks = document.querySelectorAll('.nav-link');
-    const headerHeight = 110; // Offset for the floating header
+    const headerHeight = 80; // Offset for the floating header
 
     // ==========================================
     // 1. Navegación Suave (Click en Menú)

@@ -30,22 +30,22 @@ function initPresentationSection() {
 
     // BLOQUE 1: Elementos de la Izquierda (Badge, Títulos, Párrafo, Botón y Testimonio)
     tl.fromTo(section.querySelectorAll(".pres-element"), 
-        { y: 80, opacity: 0, rotateX: -15, filter: "blur(8px)" }, 
-        { y: 0, opacity: 1, rotateX: 0, filter: "blur(0px)", duration: 1.2, stagger: 0.12, ease: "power4.out" }
+        { y: 40, opacity: 0, rotateX: -5, filter: "blur(4px)" }, 
+        { y: 0, opacity: 1, rotateX: 0, filter: "blur(0px)", duration: 0.8, stagger: 0.06, ease: "expo.out" }
     )
     
     // BLOQUE 2: Imagen Principal (Derecha) - Viene desde profundidad
     .fromTo(section.querySelector(".pres-image-wrapper"), 
-        { z: -100, x: 30, opacity: 0, filter: "blur(10px)", scale: 0.9 },
-        { z: 0, x: 0, opacity: 1, filter: "blur(0px)", scale: 1, duration: 1.5, ease: "expo.out" }, 
-        "-=1" // Solapamiento agresivo para fluidez
+        { z: -80, x: 20, opacity: 0, filter: "blur(8px)", scale: 0.95 },
+        { z: 0, x: 0, opacity: 1, filter: "blur(0px)", scale: 1, duration: 1.1, ease: "expo.out" }, 
+        "-=0.7" // Solapamiento ajustado
     )
     
     // BLOQUE 3: Card flotante (Alta Precisión)
     .fromTo(section.querySelector(".pres-float-badge"), 
-        { scale: 0.5, opacity: 0, rotateY: 45 },
-        { scale: 1, opacity: 1, rotateY: 0, duration: 0.8, ease: "back.out(1.7)" }, 
-        "-=0.6"
+        { scale: 0.7, opacity: 0, rotateY: 30 },
+        { scale: 1, opacity: 1, rotateY: 0, duration: 0.6, ease: "back.out(1.4)" }, 
+        "-=0.5"
     );
 
     // 4. Parallax suave en la decoracion de fondo (Capa extra de dinamismo)

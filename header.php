@@ -20,16 +20,16 @@
 	  ========================================
 	-->
 	<header id="main-header" class="fixed top-6 left-0 right-0 z-50 px-4 flex justify-center transition-all duration-300">
-		<div class="w-full max-w-6xl bg-white shadow-[0_8px_30px_rgb(0,0,0,0.08)] rounded-full px-6 py-3 flex justify-between lg:grid lg:grid-cols-3 items-center border border-gray-100">
+		<div class="w-full max-w-[1360px] bg-white shadow-[0_8px_30px_rgb(0,0,0,0.08)] rounded-full px-6 py-3 flex justify-between lg:grid lg:grid-cols-3 items-center border border-gray-100">
 			
 			<!-- 1. IZQUIERDA: Logo -->
 			<div class="flex items-center gap-2 justify-self-start cursor-pointer group" onclick="scrollToSection('#inicio')">
-				<div class="w-9 h-9 rounded-full bg-primary flex items-center justify-center text-white transition-transform group-hover:scale-110">
+				<div class="w-9 h-9 rounded-full bg-primary-600 flex items-center justify-center text-white transition-transform group-hover:scale-110">
 					<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
 					</svg>
 				</div>
-				<span class="font-display font-bold text-xl text-primary tracking-tight">
+				<span class="font-display font-bold text-xl text-primary-600 tracking-tight">
 					Dr. Cabello
 				</span>
 			</div>
@@ -70,9 +70,9 @@
 
 				<!-- Hamburger Button -->
 				<button id="mobile-menu-toggle" class="flex lg:hidden flex-col gap-1.5 p-2 focus:outline-none group">
-					<span class="w-6 h-0.5 bg-primary rounded-full transition-all duration-300 group-[.is-active]:rotate-45 group-[.is-active]:translate-y-2"></span>
-					<span class="w-6 h-0.5 bg-primary rounded-full transition-all duration-300 group-[.is-active]:opacity-0"></span>
-					<span class="w-6 h-0.5 bg-primary rounded-full transition-all duration-300 group-[.is-active]:-rotate-45 group-[.is-active]:-translate-y-2"></span>
+					<span class="w-6 h-0.5 bg-primary-600 rounded-full transition-all duration-300 group-[.is-active]:rotate-45 group-[.is-active]:translate-y-2"></span>
+					<span class="w-6 h-0.5 bg-primary-600 rounded-full transition-all duration-300 group-[.is-active]:opacity-0"></span>
+					<span class="w-6 h-0.5 bg-primary-600 rounded-full transition-all duration-300 group-[.is-active]:-rotate-45 group-[.is-active]:-translate-y-2"></span>
 				</button>
 			</div>
 		</div>
@@ -85,7 +85,7 @@
 		<!-- Mobile Menu Header -->
 		<div class="flex justify-between items-center px-8 py-8 border-b border-white/5">
 			<div class="flex items-center gap-2">
-				<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white">
+				<div class="w-8 h-8 rounded-full bg-primary-600 flex items-center justify-center text-white">
 					<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
 					</svg>
@@ -94,30 +94,30 @@
 					Dr. Cabello
 				</span>
 			</div>
-			<button id="mobile-menu-close" class="text-white hover:text-primary transition-colors">
+			<button id="mobile-menu-close" class="text-white hover:text-primary-600 transition-colors">
 				<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
 			</button>
 		</div>
 
 		<!-- Mobile Menu Body -->
 		<nav class="flex-1 flex flex-col px-8 mt-4">
-			<a href="#inicio" class="mobile-nav-link py-6 text-3xl font-display font-bold text-white border-b border-white/5 hover:text-primary transition-colors">
+			<a href="#inicio" class="mobile-nav-link py-6 text-3xl font-display font-bold text-white border-b border-white/5 hover:text-primary-600 transition-colors">
 				Inicio
 			</a>
-			<a href="#tratamientos" class="mobile-nav-link py-6 text-3xl font-display font-bold text-white border-b border-white/5 hover:text-primary transition-colors">
+			<a href="#tratamientos" class="mobile-nav-link py-6 text-3xl font-display font-bold text-white border-b border-white/5 hover:text-primary-600 transition-colors">
 				Tratamientos
 			</a>
-			<a href="#nosotros" class="mobile-nav-link py-6 text-3xl font-display font-bold text-white border-b border-white/5 hover:text-primary transition-colors">
+			<a href="#nosotros" class="mobile-nav-link py-6 text-3xl font-display font-bold text-white border-b border-white/5 hover:text-primary-600 transition-colors">
 				Nosotros
 			</a>
-			<a href="#contacto" class="mobile-nav-link py-6 text-3xl font-display font-bold text-white border-b border-white/5 hover:text-primary transition-colors">
+			<a href="#contacto" class="mobile-nav-link py-6 text-3xl font-display font-bold text-white border-b border-white/5 hover:text-primary-600 transition-colors">
 				Contacto
 			</a>
 		</nav>
 
 		<!-- Mobile Menu Footer -->
 		<div class="px-8 py-12 mt-auto flex justify-between items-end">
-			<a href="#contacto" class="bg-primary hover:bg-primary-light text-white px-7 py-3.5 rounded-2xl font-bold text-base shadow-primary-glow transition-all active:scale-95">
+			<a href="#contacto" class="bg-primary-600 hover:bg-primary-500 text-white px-7 py-3.5 rounded-2xl font-bold text-base shadow-primary-glow transition-all active:scale-95">
 				Reservar Cita
 			</a>
 			

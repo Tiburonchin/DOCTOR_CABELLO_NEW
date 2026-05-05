@@ -11,83 +11,63 @@ Text Domain: doctor-cabello
 */
 
 @import "tailwindcss";
+@config "../tailwind.config.js";
 
-@theme {
-    /* 1. Base RGB Values (Esencial para opacidades dinámicas en Tailwind v4) */
-    --rgb-primary: 36, 80, 176;       /* #2450b0 */
-    --rgb-secondary: 37, 150, 190;    /* #2596be */
-    --rgb-dark: 15, 23, 42;           /* #0f172a - Optical Black */
-    --rgb-white: 255, 255, 255;
+@layer base {
+  :root {
+    /* ========================================
+       ESCALAS DE COLOR (Formatos RGB para Tailwind opacidades)
+       ======================================== */
+    
+    /* Primario: Azul Oscuro (#2450b0) */
+    --color-primary-50: 239 244 252;
+    --color-primary-100: 214 226 249;
+    --color-primary-500: 54 104 196; /* --primario-claro */
+    --color-primary-600: 36 80 176;  /* Base: #2450b0 */
+    --color-primary-700: 29 63 148;  /* --primario-hover */
+    --color-primary-800: 26 61 143;  /* --primario-oscuro */
+    --color-primary-900: 20 46 107;
 
-    /* 2. Brand Colors */
-    --color-primary: #2450b0;
-    --color-primary-light: #3668c4;
-    --color-primary-dark: #1a3d8f;
-    --color-primary-hover: #1d3f94;
+    /* Paleta de Iconos de Análisis */
+    --color-step-1-bg: 224 231 255;
+    --color-step-1-icon: 79 70 229;
+    --color-step-2-bg: 207 250 254;
+    --color-step-2-icon: 8 145 178;
+    --color-step-3-bg: 237 233 254;
+    --color-step-3-icon: 124 58 237;
+    --color-step-4-bg: 220 252 231;
+    --color-step-4-icon: 22 163 74;
+    
+    /* Secundario: Celeste (#2596be) */
+    --color-secondary-50: 240 249 252;
+    --color-secondary-100: 224 242 248;
+    --color-secondary-400: 61 180 216; /* --secundario-claro */
+    --color-secondary-500: 37 150 190; /* Base: #2596be */
+    --color-secondary-600: 30 124 160; /* --secundario-hover */
+    --color-secondary-700: 26 120 153; /* --secundario-oscuro */
 
-    --color-secondary: #2596be;
-    --color-secondary-light: #3db4d8;
-    --color-secondary-dark: #1a7899;
-    --color-secondary-hover: #1e7ca0;
+    /* Grises Neutros */
+    --color-gray-100: 248 250 253; /* surface-2 */
+    --color-gray-200: 232 232 232; /* gris-claro */
+    --color-gray-300: 217 217 217; /* gris-medio */
+    --color-gray-400: 168 168 168; /* gris-oscuro */
 
-    /* 3. Neutrals & Surfaces (Escala de grises moderna para UI médica) */
-    --color-white: #ffffff;
-    --color-gray-50: #f8fafc; /* Background principal súper limpio */
-    --color-gray-100: #f1f5f9; /* Background secundario (cards) */
-    --color-gray-200: #e2e8f0; /* Bordes suaves */
-    --color-gray-300: #cbd5e1; /* Bordes fuertes */
-    --color-gray-400: #94a3b8; /* Iconos inactivos */
-    --color-gray-600: #475569; /* Textos secundarios / Párrafos */
-    --color-gray-900: #0f172a; /* Títulos principales (Nunca #000000) */
+    /* ========================================
+       VARIABLES SEMÁNTICAS
+       ======================================== */
+    --bg-background: 244 247 250; /* bg-gradient-start */
+    --bg-surface: 255 255 255;
+    
+    --text-main: 28 37 50;     /* text-primary */
+    --text-muted: 90 108 130;  /* text-secondary */
+    
+    --border-light: 232 232 232;
+    --border-base: 217 217 217;
 
-    /* 4. Semantic Mapping */
-    --color-background: var(--color-gray-50);
-    --color-text: var(--color-gray-600);
-    --text-primary: var(--color-gray-900);
-    --text-secondary: var(--color-gray-600);
-    --text-inverse: var(--color-white);
-    --text-accent: var(--color-primary);
+    /* Spacing & Radii (Mapeados para uso nativo o con GSAP) */
+    --header-offset: 80px; /* Ajustado para un navbar estándar */
 
-    /* 5. Gradients */
-    --gradient-primary: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
-    --gradient-surface: linear-gradient(180deg, var(--color-white), var(--color-gray-50));
-
-    /* 6. Typography - Font Families */
-    --font-sans: "Poppins", system-ui, -apple-system, sans-serif;
-    --font-display: "Outfit", var(--font-sans);
-
-    /* 7. Typography - Hierarchy (Escala armónica en REM) */
-    --text-xs: 0.75rem;     /* 12px - Labels pequeños */
-    --text-sm: 0.875rem;    /* 14px - Botones secundarios */
-    --text-base: 1rem;      /* 16px - Párrafos base */
-    --text-lg: 1.125rem;    /* 18px - Párrafos destacados */
-    --text-xl: 1.25rem;     /* 20px - Subtítulos pequeños (H4) */
-    --text-2xl: 1.5rem;     /* 24px - Títulos de sección (H3) */
-    --text-3xl: 2rem;       /* 32px - Títulos importantes (H2) */
-    --text-4xl: 2.5rem;     /* 40px - Título de página (H1 Mobile/Tablet) */
-    --text-5xl: 3.5rem;     /* 56px - Título principal Hero (H1 Desktop) */
-
-    /* 8. Line Heights (Interlineado) */
-    --leading-none: 1;
-    --leading-tight: 1.25;  /* Para Títulos (H1, H2, H3) */
-    --leading-normal: 1.5;  /* Para Párrafos legibles */
-    --leading-relaxed: 1.625;
-
-    /* 9. Borders & Radii */
-    --radius-sm: 0.5rem;    /* 8px */
-    --radius-md: 0.75rem;   /* 12px */
-    --radius-lg: 1rem;      /* 16px - Ideal para Cards médicas */
-    --radius-xl: 1.5rem;    /* 24px */
-    --radius-full: 9999px;  /* Botones pill */
-
-    /* 10. Shadows (Optimizadas para rendimiento y elegancia) */
-    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05); /* Botones */
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.05); /* Cards */
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.05); /* Modales */
-    --shadow-primary-glow: 0 10px 25px -5px rgba(36, 80, 176, 0.4);
-    --shadow-secondary-glow: 0 8px 20px -4px rgba(37, 150, 190, 0.5);
-
-    /* 11. Z-Index Architecture (Adiós al z-index: 99999) */
+    /* Z-Index Architecture (Mantenidos para evitar roturas) */
     --z-negative: -1;      /* Para fondos y decoraciones */
     --z-elevate: 10;       /* Para cards sobre fondos */
     --z-dropdown: 40;      /* Menús desplegables */
@@ -95,17 +75,17 @@ Text Domain: doctor-cabello
     --z-modal: 100;        /* Popups / Formularios de reserva */
     --z-transition: 200;   /* Para la transición de página */
     --z-toast: 999;        /* Notificaciones de éxito/error */
-}
+  }
 
-@layer base {
-    body {
-        @apply bg-gray-50 text-gray-600 antialiased overflow-x-hidden;
-        scroll-behavior: auto; /* Desactivar smooth nativo para control GSAP/Lenis */
-        -moz-osx-font-smoothing: grayscale;
-        margin: 0;
-    }
+  /* Mejora de accesibilidad base */
+  body {
+    @apply bg-background text-main font-sans antialiased selection:bg-primary-500 selection:text-white;
+    scroll-behavior: auto; /* Desactivar smooth nativo para control GSAP/Lenis */
+    -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+  }
 
-    h1, h2, h3, h4, h5, h6 {
+  h1, h2, h3, h4, h5, h6 {
         @apply font-display;
     }
 
@@ -157,18 +137,18 @@ Text Domain: doctor-cabello
     /* Nav links activos (General style - For other navs if needed) */
     .nav-link {
         @apply relative transition-colors duration-300;
-        color: var(--color-gray-600);
+        color: rgb(var(--text-muted));
     }
     .nav-link::after {
         content: '';
-        @apply absolute bottom-[-4px] left-0 h-[2px] bg-primary transition-all duration-300;
+        @apply absolute bottom-[-4px] left-0 h-[2px] bg-primary-600 transition-all duration-300;
         width: 0%;
     }
     .nav-link:hover {
-        @apply text-primary;
+        @apply text-primary-600;
     }
     .nav-link.active {
-        @apply text-primary font-medium;
+        @apply text-primary-600 font-medium;
     }
     .nav-link.active::after {
         width: 100%;
@@ -176,7 +156,7 @@ Text Domain: doctor-cabello
 
     /* Floating Header Nav Links (Exact Match with Snippet) */
     #main-header .nav-link {
-        @apply px-6 py-2 rounded-full text-gray-600 hover:bg-gray-50 hover:text-primary font-medium text-base transition-all duration-300;
+        @apply px-6 py-2 rounded-full text-muted hover:bg-background hover:text-primary-600 font-medium text-base transition-all duration-300;
     }
     
     /* Remove underline for floating header links */
@@ -185,8 +165,8 @@ Text Domain: doctor-cabello
     }
 
     #main-header .nav-link.active {
-        background-color: #eff6ff; /* blue-50 */
-        @apply text-primary font-medium;
+        background-color: rgb(var(--color-primary-50)); /* blue-50 equivalent */
+        @apply text-primary-600 font-medium;
     }
 
     /* Smooth transitions for retraction */
@@ -210,15 +190,16 @@ Text Domain: doctor-cabello
         background-size: 200% 100%;
         background-image: linear-gradient(
             90deg, 
-            var(--color-primary) 0%, 
-            var(--color-secondary) 50%, 
-            var(--color-primary) 100%
+            rgb(var(--color-primary-600)) 0%, 
+            rgb(var(--color-secondary-500)) 50%, 
+            rgb(var(--color-primary-600)) 100%
         );
     }
 
     .gradient-btn:hover {
         background-position: 100% 0;
-        @apply scale-105 shadow-secondary-glow;
+        @apply scale-105;
+        box-shadow: 0 8px 20px -4px rgba(var(--color-secondary-500), 0.5);
     }
 
     /* Botón Secundario (Glassmorphism) */
@@ -236,12 +217,114 @@ Text Domain: doctor-cabello
     }
 
     /* ========================================
+      RIBBON SECTION STYLES
+    ========================================
+    */
+    .ribbon-section {
+        @apply relative w-full overflow-hidden block py-6 m-0 z-10;
+        clear: both;
+        
+        /* Fondo: Azul Oscuro Corporativo */
+        background: rgb(var(--color-primary-600));
+
+        /* Sutil gradiente para profundidad sin perder sobriedad */
+        background: linear-gradient(90deg,
+                rgb(var(--color-primary-600)) 0%,
+                rgb(var(--color-primary-800)) 50%,
+                rgb(var(--color-primary-600)) 100%);
+
+        /* Bordes y Sombra */
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .ribbon-container {
+        @apply relative flex flex-col gap-0 w-full min-h-[60px] justify-center overflow-hidden z-[2];
+    }
+
+    /* ============================================
+       RIBBON TRACKS
+       ============================================ */
+
+    .ribbon-track {
+        @apply relative w-full flex items-center overflow-hidden py-1;
+        /* Fade suave en bordes para integración */
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+        mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+    }
+
+    .ribbon-track__content {
+        @apply flex items-center whitespace-nowrap w-max;
+        gap: 6rem;
+        will-change: transform;
+    }
+
+    /* Las animaciones scrollLeft/Right se omiten porque GSAP controla el movimiento */
+
+    /* ============================================
+       RIBBON PHRASES (TYPOGRAPHY)
+       ============================================ */
+
+    .ribbon-phrase {
+        @apply inline-flex items-center gap-4 font-display font-semibold uppercase text-white relative transition-all duration-300;
+        font-size: clamp(1rem, 2vw, 1.125rem);
+        letter-spacing: 0.15em;
+    }
+
+    /* Separador: Geométrico (Rombo) */
+    .ribbon-phrase::after {
+        content: '◆';
+        @apply absolute top-1/2 -translate-y-1/2 opacity-80;
+        right: -3.5rem;
+        font-size: 0.6em;
+        color: rgb(var(--color-secondary-400)); /* Acento celeste */
+    }
+
+    .ribbon-phrase:last-child::after {
+        display: none;
+    }
+
+    /* Hover effect: Sutil brillo blanco */
+    .ribbon-phrase:hover {
+        color: rgb(var(--color-secondary-400));
+        text-shadow: 0 0 15px rgba(var(--color-secondary-400), 0.4);
+    }
+
+    /* ============================================
+       RESPONSIVE
+       ============================================ */
+
+    @media (max-width: 1024px) {
+        .ribbon-track__content { gap: 5rem; }
+        .ribbon-phrase::after { right: -3rem; }
+    }
+
+    @media (max-width: 768px) {
+        .ribbon-section { @apply py-5; }
+        .ribbon-container { min-height: 50px; }
+        .ribbon-track__content { gap: 4rem; }
+        .ribbon-phrase { 
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+        }
+        .ribbon-phrase::after { right: -2.5rem; }
+    }
+
+    @media (max-width: 480px) {
+        .ribbon-section { @apply py-4; }
+        .ribbon-phrase { font-size: 0.8rem; }
+        .ribbon-track__content { gap: 3rem; }
+        .ribbon-phrase::after { right: -1.8rem; }
+    }
+
+    /* ========================================
       TRATAMIENTOS SECTION STYLES
     ========================================
     */
 
     .bg-gradient-radial {
-        background: radial-gradient(circle at 50% 0%, rgba(var(--rgb-primary), 0.08) 0%, transparent 70%);
+        background: radial-gradient(circle at 50% 0%, rgba(var(--color-primary-600), 0.08) 0%, transparent 70%);
     }
 
     /* Custom Scrollbar para paneles */
@@ -249,16 +332,16 @@ Text Domain: doctor-cabello
         width: 6px;
     }
     .custom-scrollbar::-webkit-scrollbar-track {
-        background: var(--color-gray-900);
+        background: rgb(var(--text-main));
         opacity: 0.5;
         border-radius: 8px;
     }
     .custom-scrollbar::-webkit-scrollbar-thumb {
-        background: var(--color-gray-600);
+        background: rgb(var(--text-muted));
         border-radius: 8px;
     }
     .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-        background: var(--color-gray-400);
+        background: rgb(var(--color-gray-400));
     }
 
     .perspective-1000 {
@@ -275,7 +358,7 @@ Text Domain: doctor-cabello
 
     /* Glow sutil para elementos destacados */
     .shadow-primary-glow {
-        box-shadow: 0 10px 25px -5px rgba(var(--rgb-primary), 0.3);
+        box-shadow: 0 10px 25px -5px rgba(var(--color-primary-600), 0.3);
     }
 
     /* ========================================
@@ -284,7 +367,7 @@ Text Domain: doctor-cabello
     */
 
     .gallery-shadow {
-        box-shadow: 0 20px 40px -10px rgba(15, 23, 42, 0.15), 0 0 20px rgba(36, 80, 176, 0.05);
+        box-shadow: 0 20px 40px -10px rgba(var(--text-main), 0.15), 0 0 20px rgba(var(--color-primary-600), 0.05);
     }
 
     .container-fluid {
@@ -357,5 +440,56 @@ Text Domain: doctor-cabello
     /* Etiqueta de Antes/Después */
     .status-badge {
         @apply absolute bottom-4 left-4 bg-black/50 backdrop-blur-md text-white text-[10px] uppercase tracking-widest px-3 py-1 rounded-full font-bold z-20;
+    }
+
+    /* ========================================
+       PROCEDIMIENTOS SECTION UTILITIES
+    ========================================
+    */
+    .glass-panel {
+        background: rgba(var(--bg-surface), 0.85);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+    }
+
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+    .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar {
+        width: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+        background: rgb(var(--color-gray-100));
+        border-radius: 10px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: rgb(var(--color-gray-300));
+        border-radius: 10px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+        background: rgb(var(--color-primary-400));
+    }
+
+    /* --- SECCIÓN ANÁLISIS --- */
+    .step-number {
+        font-size: 3.5rem;
+        font-weight: 900;
+        color: #94a3b8;
+        opacity: 0.4;
+        line-height: 1;
+    }
+
+    .tilt-card {
+        transform-style: preserve-3d;
+        transition: transform 0.1s ease-out;
+    }
+
+    .inner-content {
+        transform: translateZ(20px);
     }
 }
