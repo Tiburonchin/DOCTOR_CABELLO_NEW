@@ -18,10 +18,8 @@ get_header();
         '03c-analisis',
         '06-testimonios',
         '07-faq',
-        '03-nosotros',
-        '05-acerca',
+        '08-conocenos',
         '04-contacto',
-        '07-conclusion',
     );
 
     foreach ( $sections as $section ) {

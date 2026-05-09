@@ -105,6 +105,10 @@ Text Domain: doctor-cabello
     section {
         @apply relative overflow-hidden;
     }
+
+    .no-tap-highlight {
+        -webkit-tap-highlight-color: transparent;
+    }
 }
 
 @layer components {
@@ -574,5 +578,88 @@ Text Domain: doctor-cabello
         height: 0;
         overflow: hidden;
         opacity: 0;
+    }
+
+    /* ========================================
+       CONÓCENOS SECTION STYLES
+    ========================================
+    */
+    #conocenos {
+        perspective: 1200px;
+    }
+
+    .shape-blob {
+        position: absolute;
+        background: linear-gradient(to right, rgb(var(--color-primary-100)), rgb(var(--color-secondary-100)));
+        border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+        animation: morph 8s ease-in-out infinite both alternate;
+        z-index: 0;
+    }
+
+    @keyframes morph {
+        0% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+        100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+    }
+
+    /* --- SECCIÓN CONTACTO --- */
+    #contacto ::-webkit-calendar-picker-indicator {
+        cursor: pointer;
+        opacity: 0.6;
+        transition: all 0.3s ease;
+        filter: invert(0.2);
+    }
+
+    #contacto ::-webkit-calendar-picker-indicator:hover {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+
+    .gs-input-group input:focus, 
+    .gs-input-group textarea:focus, 
+    .gs-input-group select:focus {
+        @apply shadow-[0_0_20px_rgba(var(--color-primary-500),0.1)];
+    }
+
+    /* --- TOAST COPIED (FOOTER) --- */
+    .toast-copied {
+        position: fixed;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%) translateY(100px);
+        background-color: rgb(var(--color-primary-900));
+        color: white;
+        padding: 12px 28px;
+        border-radius: 99px;
+        font-size: 14px;
+        font-weight: 600;
+        opacity: 0;
+        pointer-events: none;
+        z-index: 1000;
+        box-shadow: 0 10px 25px rgba(20, 46, 107, 0.3);
+    }
+
+    /* ========================================
+       CURTAIN REVEAL FOOTER
+       ========================================
+       Arquitectura:
+       - #page tiene position:relative y z-index alto con fondo opaco.
+         Actúa como la "cortina" que cubre el footer.
+       - #site-footer está en flujo normal DEBAJO de #page.
+         Es revelado a medida que #page se desplaza hacia arriba.
+       - La sombra en #page crea la ilusión de profundidad.
+    */
+    #page.site {
+        position: relative;
+        z-index: 10;
+        /* Fondo opaco garantizado — cubre el footer */
+        background-color: rgb(var(--bg-background));
+        box-shadow: 0 25px 60px -12px rgba(0, 0, 0, 0.15);
+    }
+
+    #site-footer {
+        position: sticky;
+        bottom: 0;
+        z-index: 1;
+        perspective: 1000px; /* Habilita efectos 3D para GSAP */
     }
 }

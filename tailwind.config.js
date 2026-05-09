@@ -57,8 +57,9 @@ module.exports = {
         header: 'var(--z-header)',
       },
       fontFamily: {
-        sans: ['Poppins', 'sans-serif'],
+        sans: ['Inter', 'sans-serif'],
         display: ['Outfit', 'sans-serif'],
+        serif: ['Newsreader', 'serif'],
       },
       animation: {
         'marquee-left': 'marquee-left 40s linear infinite',
