@@ -16,35 +16,21 @@
     <div class="max-w-[1440px] mx-auto px-6 sm:px-8 lg:px-16 relative z-10 w-full">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
             
-            <!-- Columna Izquierda: Imagen con Badge Interno -->
-            <div class="relative gs-image-col lg:col-span-7">
+            <!-- Columna Izquierda: Imagen -->
+            <div class="relative gs-image-col lg:col-span-6">
+                <!-- Contenedor de Imagen -->
                 <div class="relative rounded-[3rem] overflow-hidden shadow-[0_40px_80px_-20px_rgba(0,0,0,0.6)] border border-white/10 aspect-[4/5] w-full max-w-2xl mx-auto lg:mx-0 group">
                     <img 
                         src="<?php echo get_template_directory_uri(); ?>/assets/images/doctor_professional_portrait.png" 
                         alt="Dr. Carlos Mendoza - Especialista Senior" 
                         class="w-full h-full object-cover object-top transition-transform duration-1000 group-hover:scale-105"
                     />
-                    
                     <div class="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80"></div>
-
-                    <div class="absolute bottom-8 left-8 bg-white/5 backdrop-blur-2xl px-6 py-4 rounded-2xl border border-white/20 gs-badge z-20 flex items-center gap-6 shadow-2xl">
-                        <div class="flex items-center gap-3 border-r border-white/20 pr-6">
-                            <span class="text-secondary-400 font-display font-bold text-4xl drop-shadow-[0_0_10px_rgba(var(--color-secondary-500),0.4)]">+15</span>
-                            <div class="flex flex-col">
-                                <span class="text-[9px] uppercase tracking-[0.2em] text-gray-400 leading-none mb-1">Años de</span>
-                                <span class="text-white font-bold text-xs uppercase tracking-wider">Labor</span>
-                            </div>
-                        </div>
-                        <div class="flex flex-col justify-center">
-                            <h5 class="text-white font-display font-bold text-[11px] tracking-[0.2em] uppercase mb-0.5">Trayectoria de Éxito</h5>
-                            <p class="text-secondary-300 text-[9px] uppercase tracking-[0.25em] font-semibold opacity-90">Excelencia Médica</p>
-                        </div>
-                    </div>
                 </div>
             </div>
 
             <!-- Columna Derecha: Información -->
-            <div class="gs-content-col lg:col-span-5">
+            <div class="gs-content-col lg:col-span-6">
                 <div class="inline-flex items-center gap-4 py-2 px-6 rounded-full bg-white/5 border border-white/10 mb-8 backdrop-blur-sm">
                     <span class="w-2 h-2 rounded-full bg-secondary-500 shadow-[0_0_10px_rgba(var(--color-secondary-500),0.8)]"></span>
                     <span class="text-secondary-400 text-xs font-bold tracking-[0.3em] uppercase">Excelencia Clínica</span>

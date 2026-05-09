@@ -626,7 +626,7 @@ Text Domain: doctor-cabello
         bottom: 30px;
         left: 50%;
         transform: translateX(-50%) translateY(100px);
-        background-color: rgb(var(--color-primary-900));
+        background-color: rgb(var(--color-secondary-500));
         color: white;
         padding: 12px 28px;
         border-radius: 99px;
@@ -635,7 +635,7 @@ Text Domain: doctor-cabello
         opacity: 0;
         pointer-events: none;
         z-index: 1000;
-        box-shadow: 0 10px 25px rgba(20, 46, 107, 0.3);
+        box-shadow: 0 10px 25px rgba(var(--color-secondary-500), 0.3);
     }
 
     /* ========================================
@@ -661,5 +661,241 @@ Text Domain: doctor-cabello
         bottom: 0;
         z-index: 1;
         perspective: 1000px; /* Habilita efectos 3D para GSAP */
+    }
+
+    /* ========================================
+       FLOATING SOCIAL BAR (Vertical)
+       ========================================
+       Barra lateral con colores de marca por defecto.
+       Más prominente y visualmente reconocible.
+    */
+
+    .social-bar__container {
+        background: rgba(var(--bg-surface), 0.82);
+        backdrop-filter: blur(20px) saturate(1.8);
+        -webkit-backdrop-filter: blur(20px) saturate(1.8);
+        border: 1px solid rgba(var(--color-primary-600), 0.15);
+        border-radius: 2rem;
+        padding: 12px 8px;
+        box-shadow:
+            0 10px 40px rgba(0, 0, 0, 0.12),
+            0 4px 12px rgba(0, 0, 0, 0.06),
+            0 0 0 1px rgba(255, 255, 255, 0.6) inset;
+        transition: box-shadow 0.4s ease, border-color 0.4s ease, transform 0.3s ease;
+    }
+
+    .social-bar__container:hover {
+        border-color: rgba(var(--color-primary-500), 0.3);
+        box-shadow:
+            0 14px 50px rgba(0, 0, 0, 0.16),
+            0 6px 20px rgba(0, 0, 0, 0.08),
+            0 0 0 1px rgba(255, 255, 255, 0.7) inset;
+    }
+
+    /* --- Links (base) --- */
+    .social-bar__link {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 46px;
+        height: 46px;
+        border-radius: 14px;
+        transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
+        text-decoration: none;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    /* ============================================
+       BRAND COLORS — always visible
+    ============================================ */
+
+    /* TikTok: Negro + acento rosa */
+    .social-bar__link--tiktok {
+        color: #010101;
+    }
+    .social-bar__link--tiktok:hover {
+        color: #FE2C55;
+        background: rgba(254, 44, 85, 0.1);
+        box-shadow: 0 0 16px rgba(254, 44, 85, 0.2);
+    }
+
+    /* YouTube: Rojo */
+    .social-bar__link--youtube {
+        color: #FF0000;
+    }
+    .social-bar__link--youtube:hover {
+        color: #FF0000;
+        background: rgba(255, 0, 0, 0.1);
+        box-shadow: 0 0 16px rgba(255, 0, 0, 0.2);
+    }
+
+    /* WhatsApp: Verde */
+    .social-bar__link--whatsapp {
+        color: #25D366;
+    }
+    .social-bar__link--whatsapp:hover {
+        color: #25D366;
+        background: rgba(37, 211, 102, 0.12);
+        box-shadow: 0 0 16px rgba(37, 211, 102, 0.25);
+    }
+
+    /* Instagram: Gradiente — simulado con color base */
+    .social-bar__link--instagram {
+        color: #E4405F;
+    }
+    .social-bar__link--instagram:hover {
+        color: #C13584;
+        background: linear-gradient(135deg, rgba(253, 29, 29, 0.08), rgba(131, 58, 180, 0.1));
+        box-shadow: 0 0 16px rgba(225, 48, 108, 0.2);
+    }
+
+    /* --- Icon container --- */
+    .social-bar__icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        will-change: transform;
+    }
+
+    /* --- Tooltip Flyout --- */
+    .social-bar__tooltip {
+        position: absolute;
+        right: calc(100% + 14px);
+        top: 50%;
+        transform: translateY(-50%) translateX(8px);
+        background: rgb(var(--color-primary-800));
+        color: #fff;
+        font-family: 'Outfit', sans-serif;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        padding: 5px 14px;
+        border-radius: 8px;
+        white-space: nowrap;
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 4px 12px rgba(var(--color-primary-900), 0.25);
+    }
+
+    /* Tooltips con color de marca */
+    .social-bar__link--tiktok .social-bar__tooltip   { background: #010101; }
+    .social-bar__link--youtube .social-bar__tooltip   { background: #FF0000; }
+    .social-bar__link--whatsapp .social-bar__tooltip  { background: #25D366; color: #fff; }
+    .social-bar__link--instagram .social-bar__tooltip { background: linear-gradient(135deg, #833AB4, #E1306C, #F77737); }
+
+    .social-bar__link--tiktok .social-bar__tooltip::after   { background: #010101; }
+    .social-bar__link--youtube .social-bar__tooltip::after   { background: #FF0000; }
+    .social-bar__link--whatsapp .social-bar__tooltip::after  { background: #25D366; }
+    .social-bar__link--instagram .social-bar__tooltip::after { background: #E1306C; }
+
+    /* Flecha del tooltip → */
+    .social-bar__tooltip::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        right: -5px;
+        transform: translateY(-50%) rotate(45deg);
+        width: 10px;
+        height: 10px;
+        background: rgb(var(--color-primary-800));
+        border-radius: 2px;
+    }
+
+    .social-bar__link:hover .social-bar__tooltip {
+        opacity: 1;
+        transform: translateY(-50%) translateX(0);
+    }
+
+    /* --- Decorative Lines --- */
+    .social-bar__line {
+        display: block;
+        width: 2px;
+        height: 22px;
+        border-radius: 2px;
+        background: linear-gradient(
+            to bottom,
+            rgba(var(--color-primary-500), 0.45),
+            rgba(var(--color-secondary-400), 0.45)
+        );
+        margin: 4px auto;
+        transform-origin: top center;
+    }
+
+    .social-bar__line--bottom {
+        transform-origin: bottom center;
+        background: linear-gradient(
+            to bottom,
+            rgba(var(--color-secondary-400), 0.45),
+            rgba(var(--color-primary-500), 0.45)
+        );
+    }
+
+    /* --- Divider entre secciones --- */
+    .social-bar__divider {
+        display: block;
+        width: 20px;
+        height: 1px;
+        background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(var(--color-primary-500), 0.3),
+            transparent
+        );
+        margin: 4px auto;
+    }
+
+    /* --- RESPONSIVE: Horizontal bottom bar on mobile --- */
+    @media (max-width: 768px) {
+        #social-bar {
+            top: auto !important;
+            bottom: 20px !important;
+            right: 50% !important;
+            transform: translateX(50%) !important;
+        }
+
+        .social-bar__container {
+            flex-direction: row !important;
+            padding: 8px 12px;
+            border-radius: 2rem;
+            gap: 2px;
+        }
+
+        .social-bar__line { display: none; }
+        .social-bar__divider {
+            width: 1px;
+            height: 22px;
+            margin: 0 4px;
+            background: linear-gradient(
+                to bottom,
+                transparent,
+                rgba(var(--color-primary-500), 0.3),
+                transparent
+            );
+        }
+
+        .social-bar__link {
+            width: 42px;
+            height: 42px;
+        }
+
+        .social-bar__tooltip {
+            display: none;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .social-bar__link {
+            width: 38px;
+            height: 38px;
+            border-radius: 12px;
+        }
+        .social-bar__link svg {
+            width: 17px;
+            height: 17px;
+        }
     }
 }

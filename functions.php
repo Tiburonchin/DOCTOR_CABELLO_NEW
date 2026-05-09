@@ -35,6 +35,7 @@ function doctor_cabello_scripts() {
     // Header & Footer logic
     wp_enqueue_script( 'doctor-cabello-header', get_template_directory_uri() . '/assets/js/header.js', array(), _S_VERSION, true );
     wp_enqueue_script( 'doctor-cabello-footer', get_template_directory_uri() . '/assets/js/footer.js', array('gsap', 'gsap-scrolltrigger'), _S_VERSION, true );
+    wp_enqueue_script( 'doctor-cabello-social-bar', get_template_directory_uri() . '/assets/js/social-bar.js', array('gsap', 'gsap-scrolltrigger'), _S_VERSION, true );
 
     // Conditional scripts for front-page
     if ( is_front_page() ) {

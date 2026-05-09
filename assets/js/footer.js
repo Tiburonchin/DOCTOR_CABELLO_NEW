@@ -128,28 +128,44 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Feedback visual botón
                 gsap.fromTo(copyBtn, 
                     { scale: 0.8, backgroundColor: "#142e6b", color: "white" }, 
-                    { scale: 1, backgroundColor: "white", color: "#142e6b", duration: 0.5, ease: "back.out(2)" }
+                    { 
+                        scale: 1, 
+                        backgroundColor: "white", 
+                        color: "#142e6b", 
+                        duration: 0.5, 
+                        ease: "back.out(2)",
+                        onComplete: () => {
+                            // Revertir a estado original después de un momento
+                            gsap.to(copyBtn, {
+                                backgroundColor: "transparent",
+                                color: "white",
+                                duration: 0.6,
+                                delay: 1,
+                                ease: "power2.out"
+                            });
+                        }
+                    }
                 );
 
                 // ANIMACIÓN DE LETRAS: Se levantan desde los extremos hacia el centro
                 gsap.to("#email-text span", {
                     y: -30,
                     scale: 1.2,
-                    color: "#2450b0",
+                    color: "#e0b060", // Color secundario (dorado) para el feedback
                     duration: 0.3,
                     stagger: {
                         amount: 0.4,
-                        from: "edges" // La magia: empieza desde los bordes hacia el centro
+                        from: "edges" 
                     },
                     ease: "power2.out",
                     onComplete: function() {
-                        // Regresan a su posición
+                        // Regresan a su posición y color original (blanco)
                         gsap.to(this.targets(), {
                             y: 0,
                             scale: 1,
-                            color: "#142e6b",
+                            color: "white", // CAMBIO CRÍTICO: Regresar a blanco para visibilidad
                             duration: 0.6,
-                            stagger: { amount: 0.3, from: "center" }, // Regresan desde el centro hacia afuera
+                            stagger: { amount: 0.3, from: "center" },
                             ease: "elastic.out(1, 0.4)"
                         });
                     }
