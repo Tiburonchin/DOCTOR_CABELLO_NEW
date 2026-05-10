@@ -35,7 +35,7 @@ $gallery_items = [
 ?>
 
 <!-- 1. TRANSICIÓN DE ENTRADA -->
-<section class="h-[60vh] w-full flex flex-col items-center justify-center bg-transparent relative z-10 border-b border-gray-100">
+<section class="h-[60vh] w-full flex flex-col items-center justify-center bg-white relative z-10 border-b border-gray-100">
     <div class="text-center space-y-6 px-6 max-w-4xl">
         <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/5 border border-primary/10 text-primary-dark text-xs font-semibold uppercase tracking-widest mb-2">
             Transformaciones que inspiran

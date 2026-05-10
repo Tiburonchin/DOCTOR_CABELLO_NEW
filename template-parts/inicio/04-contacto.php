@@ -5,7 +5,7 @@
  */
 ?>
 
-<section id="contacto" class="relative py-24 lg:py-32 overflow-hidden bg-background">
+<section id="contacto" class="relative py-24 lg:py-32 overflow-hidden bg-transparent">
     
     <!-- Elementos decorativos de fondo -->
     <div class="absolute inset-0 z-0 pointer-events-none">

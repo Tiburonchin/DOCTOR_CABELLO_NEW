@@ -78,7 +78,7 @@ Text Domain: doctor-cabello
   }
 
   html {
-    @apply bg-background;
+        background-color: rgb(var(--bg-surface));
     scroll-behavior: auto;
   }
 
@@ -683,8 +683,9 @@ Text Domain: doctor-cabello
     #page.site {
         position: relative;
         z-index: 10;
-        /* Fondo opaco garantizado — cubre el footer */
-        background-color: rgb(var(--bg-background));
+        isolation: isolate;
+        /* El fondo global vive en html; este wrapper debe ser transparente para dejar ver el ambient light */
+        background-color: transparent;
         box-shadow: 0 25px 60px -12px rgba(0, 0, 0, 0.15);
     }
 
