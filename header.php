@@ -28,18 +28,15 @@
 	  ========================================
 	-->
 	<header id="main-header" class="fixed top-6 left-0 right-0 z-50 px-4 flex justify-center transition-all duration-300">
-		<div class="w-full max-w-[1360px] bg-white shadow-[0_8px_30px_rgb(0,0,0,0.08)] rounded-full px-8 py-4 flex justify-between items-center border border-gray-100">
+		<div class="w-full max-w-[1360px] bg-white shadow-[0_8px_30px_rgb(0,0,0,0.08)] rounded-full pl-6 pr-8 py-1.5 flex justify-between items-center border border-gray-100">
 			
 			<!-- 1. IZQUIERDA: Logo -->
-			<div class="flex items-center gap-2 cursor-pointer group" onclick="scrollToSection('#hero-section')">
-				<div class="w-10 h-10 rounded-full bg-primary-600 flex items-center justify-center text-white transition-transform group-hover:scale-110">
-					<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
-					</svg>
-				</div>
-				<span class="font-display font-bold text-2xl text-primary-600 tracking-tight">
-					Dr. Cabello
-				</span>
+			<div class="flex items-center cursor-pointer group" onclick="scrollToSection('#hero-section')">
+				<img 
+					src="<?php echo get_template_directory_uri(); ?>/assets/images/logo/logo_header.webp" 
+					alt="Doctor Cabello" 
+					class="h-16 w-auto transition-transform duration-300 group-hover:scale-105"
+				/>
 			</div>
 
 			<!-- 2. DERECHA: Menú de Navegación y Toggle -->
@@ -77,19 +74,16 @@
 	</header>
 
 	<!-- Mobile Menu Overlay (Moved outside header to avoid scroll bugs) -->
-	<div id="mobile-menu" class="fixed inset-0 bg-gray-900 z-[100] flex flex-col translate-x-full transition-transform duration-500 lg:hidden">
+	<div id="mobile-menu" class="fixed inset-0 bg-gray-900 z-[100] flex flex-col opacity-0 invisible pointer-events-none transition-all duration-500 lg:hidden">
 		
 		<!-- Mobile Menu Header -->
 		<div class="flex justify-between items-center px-8 py-8 border-b border-white/5">
-			<div class="flex items-center gap-2">
-				<div class="w-8 h-8 rounded-full bg-primary-600 flex items-center justify-center text-white">
-					<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
-					</svg>
-				</div>
-				<span class="font-display font-bold text-xl text-white tracking-tight">
-					Dr. Cabello
-				</span>
+			<div class="flex items-center ml-2">
+				<img 
+					src="<?php echo get_template_directory_uri(); ?>/assets/images/logo/logo_header.webp" 
+					alt="Doctor Cabello" 
+					class="h-12 w-auto"
+				/>
 			</div>
 			<button id="mobile-menu-close" class="text-white hover:text-primary-600 transition-colors">
 				<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>

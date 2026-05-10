@@ -53,14 +53,10 @@
         }, '-=0.3');
 
     /* ==========================================
-       3. SCROLL TRIGGER — reveal logic
+       3. SCROLL TRIGGER — reveal after Hero
     ========================================== */
     const heroSection = document.getElementById('hero-section');
-    const isHomePage  = document.body.classList.contains('home');
-
-    // Solo esperamos al scroll del Hero si estamos en la Home.
-    // En páginas internas (como analisis.php), la barra aparece tras un breve delay.
-    if (heroSection && isHomePage) {
+    if (heroSection) {
         ScrollTrigger.create({
             trigger: heroSection,
             start: 'bottom 70%',
@@ -68,19 +64,20 @@
             onLeaveBack: () => enterTL.reverse(),
         });
     } else {
-        // Fallback para páginas internas o sin hero: aparición directa
+        // If no hero, just play after a small delay
         gsap.delayedCall(0.8, () => enterTL.play());
     }
 
     /* ==========================================
-       4. HIDE ON FOOTER — avoid overlap
+       4. HIDE ON CONTACTO — avoid overlap
+       Uses 'top center': bar hides only when
+       the top of #contacto reaches viewport center.
     ========================================== */
-    const footer = document.getElementById('site-footer');
-    if (footer) {
+    const contacto = document.getElementById('contacto');
+    if (contacto) {
         ScrollTrigger.create({
-            trigger: footer,
-            start: 'top 85%',
-            end: 'bottom bottom',
+            trigger: contacto,
+            start: 'top center',
             onEnter: () => gsap.to(bar, { autoAlpha: 0, x: 40, duration: 0.4, ease: 'power2.in' }),
             onLeaveBack: () => gsap.to(bar, { autoAlpha: 1, x: 0, duration: 0.5, ease: 'power2.out' }),
         });

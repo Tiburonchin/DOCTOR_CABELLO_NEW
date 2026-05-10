@@ -98,18 +98,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const toggleMenu = (show) => {
         if (show) {
-            mobileMenu.classList.remove('translate-x-full');
+            mobileMenu.classList.remove('opacity-0', 'invisible', 'pointer-events-none');
+            mobileMenu.classList.add('opacity-100', 'visible', 'pointer-events-auto');
             mobileMenuToggle.classList.add('is-active');
-            document.body.style.overflow = 'hidden'; // Prevent scroll
+            document.body.style.overflow = 'hidden';
         } else {
-            mobileMenu.classList.add('translate-x-full');
+            mobileMenu.classList.add('opacity-0', 'invisible', 'pointer-events-none');
+            mobileMenu.classList.remove('opacity-100', 'visible', 'pointer-events-auto');
             mobileMenuToggle.classList.remove('is-active');
             document.body.style.overflow = '';
         }
     };
 
     mobileMenuToggle.addEventListener('click', () => {
-        const isOpened = !mobileMenu.classList.contains('translate-x-full');
+        const isOpened = !mobileMenu.classList.contains('opacity-0');
         toggleMenu(!isOpened);
     });
 

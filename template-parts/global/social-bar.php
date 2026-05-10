@@ -10,7 +10,7 @@
 <!-- ============================================
      FLOATING SOCIAL BAR (Vertical)
      ============================================ -->
-<aside id="social-bar" class="fixed right-5 top-1/2 -translate-y-1/2 z-[90] pointer-events-none" aria-label="Redes sociales">
+<aside id="social-bar" class="fixed right-5 top-1/2 -translate-y-1/2 z-40 pointer-events-none" aria-label="Redes sociales">
 
     <div id="social-bar__inner" class="social-bar__container pointer-events-auto flex flex-col items-center gap-1">
 

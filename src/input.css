@@ -95,6 +95,11 @@ Text Domain: doctor-cabello
         background: transparent;
     }
 
+    /* Prevenir scroll horizontal en mobile */
+    html, body {
+        overflow-x: hidden;
+    }
+
     /* Estilos Base para Lenis (Smooth Scroll) */
     html.lenis { height: auto; }
     .lenis.lenis-smooth { scroll-behavior: auto; }
@@ -183,9 +188,16 @@ Text Domain: doctor-cabello
     ========================================
     */
 
+    /* Hero section — ensure seamless transition to ribbon */
+    #hero-section {
+        margin-bottom: 0;
+        border-bottom: none;
+    }
+
     /* Máscara para la entrada de texto cinematográfica de GSAP */
     .text-mask {
-        @apply overflow-hidden block pb-[0.1em];
+        @apply overflow-hidden block;
+        padding-bottom: 0.15em;
     }
 
     /* Botón Degradado (Inspirado en la referencia) */
@@ -203,7 +215,11 @@ Text Domain: doctor-cabello
     .gradient-btn:hover {
         background-position: 100% 0;
         @apply scale-105;
-        box-shadow: 0 8px 20px -4px rgba(var(--color-secondary-500), 0.5);
+        box-shadow: 0 12px 30px -6px rgba(var(--color-secondary-500), 0.45);
+    }
+
+    .gradient-btn:active {
+        @apply scale-[0.98];
     }
 
     /* Botón Secundario (Glassmorphism) */
@@ -213,11 +229,24 @@ Text Domain: doctor-cabello
 
     .glass-btn:hover {
         @apply bg-white/20 scale-105;
+        box-shadow: 0 8px 24px -4px rgba(255, 255, 255, 0.08);
+    }
+
+    .glass-btn:active {
+        @apply scale-[0.98];
     }
     
-    /* Evitar saltos de línea molestos al cambiar texto animado */
+    /* Fixed-height box for scramble text — prevents layout shift */
     .scramble-container {
-        @apply min-h-[120px] md:min-h-[100px] flex flex-col justify-start;
+        position: relative;
+        height: 120px;      /* ~4 lines at text-lg leading-relaxed (mobile) */
+        overflow: hidden;
+    }
+
+    @media (min-width: 768px) {
+        .scramble-container {
+            height: 94px;   /* ~3 lines at text-xl leading-relaxed */
+        }
     }
 
     /* ========================================
@@ -237,8 +266,7 @@ Text Domain: doctor-cabello
                 rgb(var(--color-primary-800)) 50%,
                 rgb(var(--color-primary-600)) 100%);
 
-        /* Bordes y Sombra */
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        /* Bordes y Sombra — no border-top for seamless hero blend */
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
     }
