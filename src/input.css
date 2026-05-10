@@ -77,12 +77,16 @@ Text Domain: doctor-cabello
     --z-toast: 999;        /* Notificaciones de éxito/error */
   }
 
-  /* Mejora de accesibilidad base */
+  html {
+    @apply bg-background;
+    scroll-behavior: auto;
+  }
+
   body {
-    @apply bg-background text-main font-sans antialiased selection:bg-primary-500 selection:text-white;
-    scroll-behavior: auto; /* Desactivar smooth nativo para control GSAP/Lenis */
+    @apply text-main font-sans antialiased selection:bg-primary-500 selection:text-white;
     -moz-osx-font-smoothing: grayscale;
     margin: 0;
+    background: transparent;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -95,9 +99,9 @@ Text Domain: doctor-cabello
         background: transparent;
     }
 
-    /* Prevenir scroll horizontal en mobile */
+    /* Prevenir scroll horizontal en mobile sin romper position: sticky */
     html, body {
-        overflow-x: hidden;
+        overflow-x: clip;
     }
 
     /* Estilos Base para Lenis (Smooth Scroll) */

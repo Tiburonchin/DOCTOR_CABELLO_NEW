@@ -5,7 +5,7 @@
  */
 ?>
 
-<section id="testimonios-section" class="py-24 px-4 sm:px-6 lg:px-8 bg-white overflow-hidden">
+<section id="testimonios-section" class="py-24 px-4 sm:px-6 lg:px-8 bg-transparent overflow-hidden">
     <div class="max-w-4xl mx-auto text-center relative">
         
         <!-- Icono de Comillas Decorativo -->

@@ -69,15 +69,13 @@
     }
 
     /* ==========================================
-       4. HIDE ON CONTACTO — avoid overlap
-       Uses 'top center': bar hides only when
-       the top of #contacto reaches viewport center.
+       4. HIDE ON FOOTER — avoid overlap with footer content
     ========================================== */
     const contacto = document.getElementById('contacto');
     if (contacto) {
         ScrollTrigger.create({
             trigger: contacto,
-            start: 'top center',
+            start: 'top center', // Hide when footer starts appearing
             onEnter: () => gsap.to(bar, { autoAlpha: 0, x: 40, duration: 0.4, ease: 'power2.in' }),
             onLeaveBack: () => gsap.to(bar, { autoAlpha: 1, x: 0, duration: 0.5, ease: 'power2.out' }),
         });

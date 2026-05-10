@@ -20,6 +20,7 @@
 <?php wp_body_open(); ?>
 
 <?php get_template_part( 'template-parts/global/page-transition' ); ?>
+<?php get_template_part( 'template-parts/global/ambient-light' ); ?>
 
 <div id="page" class="site min-h-screen">
 	<!-- 

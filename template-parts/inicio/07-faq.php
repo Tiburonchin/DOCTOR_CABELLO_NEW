@@ -5,9 +5,9 @@
  */
 ?>
 
-<section id="faq-section" class="py-24 px-4 sm:px-6 lg:px-8 bg-gray-50/50">
+<section id="faq-section" class="py-24 px-4 sm:px-6 lg:px-8 bg-transparent">
     <div class="max-w-7xl mx-auto">
-        <div class="bg-white rounded-3xl shadow-2xl shadow-primary-900/5 overflow-hidden border border-gray-100/60">
+        <div class="bg-white/10 backdrop-blur-xl rounded-3xl shadow-2xl shadow-primary-900/5 overflow-hidden border border-white/20">
             <div class="flex flex-col lg:flex-row">
                 
                 <!-- Bloque Izquierdo: Información y Redirección -->

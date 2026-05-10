@@ -25,11 +25,10 @@
     <!-- Grid Principal para Formato Vertical -->
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
         
-        <!-- REPRODUCTOR PRINCIPAL VERTICAL (Izquierda) -->
         <div class="lg:col-span-4 lg:sticky lg:top-32 anim-video-player flex justify-center">
-            <div id="main-player-container" class="relative w-full max-w-[380px] aspect-[9/16] bg-surface rounded-[2.5rem] p-2 shadow-[0_20px_50px_rgb(36,80,176,0.15)] border border-borderL/50 group">
+            <div id="main-player-container" class="relative w-full max-w-[380px] aspect-[9/16] bg-white/10 backdrop-blur-2xl rounded-[2.5rem] p-2 shadow-[0_20px_50px_rgba(var(--color-primary-600),0.15)] border border-white/20 group">
                 <!-- Pantalla del video -->
-                <div class="relative w-full h-full rounded-[2rem] overflow-hidden bg-gray-900 shadow-inner">
+                <div class="relative w-full h-full rounded-[2rem] overflow-hidden bg-gray-900/40 shadow-inner">
                     <img id="main-video-img" src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?q=80&w=720&h=1280&fit=crop" alt="Tratamiento" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
                     
                     <!-- Overlay Degradado para legibilidad -->
@@ -73,7 +72,7 @@
                         Agendar Tratamiento
                         <i data-lucide="arrow-right" class="w-5 h-5"></i>
                     </button>
-                    <button class="bg-surface border-2 border-borderL hover:border-primary-500 text-main px-6 py-3.5 rounded-full font-medium transition-colors flex items-center gap-2">
+                    <button class="bg-white/10 backdrop-blur-md border-2 border-white/20 hover:border-primary-500 text-main px-6 py-3.5 rounded-full font-medium transition-colors flex items-center gap-2">
                         <i data-lucide="share-2" class="w-5 h-5 text-muted"></i>
                         Compartir
                     </button>
@@ -85,10 +84,10 @@
                 <div class="flex items-center justify-between mb-6">
                     <h4 class="font-bold text-main text-xl">Más Casos y Procedimientos</h4>
                     <div class="hidden sm:flex gap-2">
-                        <button class="w-10 h-10 rounded-full bg-surface border border-borderL flex items-center justify-center text-muted hover:text-primary-600 hover:border-primary-500 transition-colors">
+                        <button class="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-muted hover:text-primary-600 hover:border-primary-500 transition-colors">
                             <i data-lucide="chevron-left" class="w-5 h-5"></i>
                         </button>
-                        <button class="w-10 h-10 rounded-full bg-surface border border-borderL flex items-center justify-center text-muted hover:text-primary-600 hover:border-primary-500 transition-colors">
+                        <button class="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-muted hover:text-primary-600 hover:border-primary-500 transition-colors">
                             <i data-lucide="chevron-right" class="w-5 h-5"></i>
                         </button>
                     </div>

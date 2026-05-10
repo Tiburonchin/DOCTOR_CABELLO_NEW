@@ -7,7 +7,7 @@
 ?>
 
 <!-- SECCIÓN DE PRESENTACIÓN -->
-<section id="presentation-section" class="relative w-full py-24 lg:py-32 overflow-hidden bg-white">
+<section id="presentation-section" class="relative w-full py-24 lg:py-32 overflow-hidden bg-transparent">
     
     <!-- Decoración de fondo -->
     <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-primary/5 to-transparent -z-10 blur-3xl pointer-events-none"></div>
@@ -63,8 +63,8 @@
                 <img src="<?php echo get_template_directory_uri(); ?>/assets/images/tratamiento-hero.png" alt="Tratamiento Capilar Especializado" class="absolute inset-0 w-full h-full object-cover opacity-95 hover:opacity-100 transition-opacity duration-500">
                 
                 <!-- Overlays de Gradiente -->
-                <div class="absolute inset-0 bg-gradient-to-t from-gray-50 via-gray-50/20 to-transparent opacity-90"></div>
-                <div class="absolute inset-0 bg-gradient-to-r from-gray-50/80 via-transparent to-transparent"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-60"></div>
+                <div class="absolute inset-0 bg-gradient-to-r from-black/10 via-transparent to-transparent"></div>
 
                 <!-- Elemento flotante decorativo animado -->
                 <div class="pres-float-badge absolute bottom-8 right-8 sm:bottom-12 sm:right-12 bg-white/90 backdrop-blur-md border border-gray-100 p-4 rounded-xl shadow-xl flex items-center gap-4">
