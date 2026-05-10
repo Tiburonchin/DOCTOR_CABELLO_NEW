@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!overlay) return;
 
     const paths = document.querySelectorAll(".shape-overlays__path");
-    let numPoints = window.innerWidth < 768 ? 6 : 10; // 10 para desktop, 6 para mobile (optimización)
+    let numPoints = window.innerWidth < 768 ? 4 : 10; // 10 para desktop, 4 para mobile (máxima optimización)
     let numPaths = paths.length;
     let delayPointsMax = 0.2; // Más corto para que sea más reactivo
     let delayPerPath = 0.2;   // Más corto
