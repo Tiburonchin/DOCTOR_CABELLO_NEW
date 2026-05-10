@@ -8,11 +8,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!overlay) return;
 
     const paths = document.querySelectorAll(".shape-overlays__path");
-    let numPoints = 10;
+    let numPoints = window.innerWidth < 768 ? 6 : 10; // 10 para desktop, 6 para mobile (optimización)
     let numPaths = paths.length;
-    let delayPointsMax = 0.3;
-    let delayPerPath = 0.25;
-    let duration = 0.85; 
+    let delayPointsMax = 0.2; // Más corto para que sea más reactivo
+    let delayPerPath = 0.2;   // Más corto
+    let duration = 0.8;      // Ligeramente más rápido
     let isOpened = false;
     let pointsDelay = [];
     let allPoints = [];
@@ -36,17 +36,20 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // Precomputar constantes para evitar cálculos repetitivos en el render
+    const stepX = 100 / (numPoints - 1);
+    const halfStepX = stepX / 2;
+
     function render() {
         for (let i = 0; i < numPaths; i++) {
             let path = paths[i];
             let points = allPoints[i];
             
-            let d = "";
-            d += isOpened ? `M 0 0 V ${points[0]} C` : `M 0 ${points[0]} C`;
+            let d = isOpened ? `M 0 0 V ${points[0]} C` : `M 0 ${points[0]} C`;
             
             for (let j = 0; j < numPoints - 1; j++) {
-                let p = (j + 1) / (numPoints - 1) * 100;
-                let cp = p - (1 / (numPoints - 1) * 100) / 2;
+                let p = (j + 1) * stepX;
+                let cp = p - halfStepX;
                 d += ` ${cp} ${points[j]} ${cp} ${points[j+1]} ${p} ${points[j+1]}`;
             }
             
@@ -85,9 +88,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Reveal animation on load
     window.addEventListener('load', () => {
-        isOpened = false;
-        resetPoints();
-        animateTimeline();
+        setTimeout(() => {
+            isOpened = false;
+            resetPoints();
+            animateTimeline();
+            tl.eventCallback("onComplete", () => {
+                overlay.classList.remove('is-opened');
+            });
+        }, 300); // Pequeño delay para suavidad
     });
 
     /**

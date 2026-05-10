@@ -7,35 +7,35 @@
 // Configuración de las imágenes de la galería (Antes y Después)
 $gallery_items = [
     [
-        'before' => 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=800&auto=format&fit=crop',
-        'after'  => 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=800&auto=format&fit=crop',
+        'before' => get_template_directory_uri() . '/assets/images/resultados/caso_1_antes.webp',
+        'after'  => get_template_directory_uri() . '/assets/images/resultados/caso_1_despues.webp',
         'alt'    => 'Paciente 1 - Recuperación capilar'
     ],
     [
-        'before' => 'https://images.unsplash.com/photo-1581595220892-b0739db3ba8c?q=80&w=800&auto=format&fit=crop',
-        'after'  => 'https://images.unsplash.com/photo-1631815589968-fdb09a223b1e?q=80&w=800&auto=format&fit=crop',
+        'before' => get_template_directory_uri() . '/assets/images/resultados/caso_2_antes.webp',
+        'after'  => get_template_directory_uri() . '/assets/images/resultados/caso_2_despues.webp',
         'alt'    => 'Paciente 2 - Resultados naturales'
     ],
     [
-        'before' => 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=800&auto=format&fit=crop',
-        'after'  => 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=800&auto=format&fit=crop',
+        'before' => get_template_directory_uri() . '/assets/images/resultados/caso_3_antes.webp',
+        'after'  => get_template_directory_uri() . '/assets/images/resultados/caso_3_despues.webp',
         'alt'    => 'Paciente 3 - Densidad recuperada'
     ],
     [
-        'before' => 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=800&auto=format&fit=crop',
-        'after'  => 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=800&auto=format&fit=crop',
+        'before' => get_template_directory_uri() . '/assets/images/resultados/caso_4_antes.webp',
+        'after'  => get_template_directory_uri() . '/assets/images/resultados/caso_4_despues.webp',
         'alt'    => 'Paciente 4 - Técnica FUE'
     ],
     [
-        'before' => 'https://images.unsplash.com/photo-1631815589968-fdb09a223b1e?q=80&w=800&auto=format&fit=crop',
-        'after'  => 'https://images.unsplash.com/photo-1581595220892-b0739db3ba8c?q=80&w=800&auto=format&fit=crop',
+        'before' => get_template_directory_uri() . '/assets/images/resultados/caso_5_antes.webp',
+        'after'  => get_template_directory_uri() . '/assets/images/resultados/caso_5_despues.webp',
         'alt'    => 'Paciente 5 - Evolución satisfactoria'
     ]
 ];
 ?>
 
 <!-- 1. TRANSICIÓN DE ENTRADA -->
-<section class="h-[60vh] w-full flex flex-col items-center justify-center bg-white relative z-10 border-b border-gray-100">
+<section class="h-[60vh] w-full flex flex-col items-center justify-center  relative z-10 border-b border-gray-100">
     <div class="text-center space-y-6 px-6 max-w-4xl">
         <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/5 border border-primary/10 text-primary-dark text-xs font-semibold uppercase tracking-widest mb-2">
             Transformaciones que inspiran

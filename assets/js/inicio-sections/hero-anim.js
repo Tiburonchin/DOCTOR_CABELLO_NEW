@@ -30,6 +30,12 @@
             source.removeAttribute('data-src');
             heroVideo.load();
         }
+        
+        // Fade in when ready
+        heroVideo.addEventListener('loadeddata', () => {
+            heroVideo.classList.remove('opacity-0');
+        });
+
         heroVideo.playbackRate = 0.75;
     }
 

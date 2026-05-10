@@ -80,7 +80,7 @@ function initProcedimientosSection() {
  * LÓGICA DE INTERACCIÓN: Cambiar video activo
  * Se mantiene global para ser llamada desde el onclick del HTML
  */
-window.changeVideo = function(element, title, category, desc, imageUrl) {
+window.changeVideo = function(element, title, category, desc, imageUrl, videoUrl) {
     // 1. Resetear estados de todos los items
     const items = document.querySelectorAll('.playlist-item');
     items.forEach(item => {
@@ -137,20 +137,32 @@ window.changeVideo = function(element, title, category, desc, imageUrl) {
         });
     }
 
-    // Imagen del reproductor y el badge (Izquierda)
+    // Video del reproductor y el badge (Izquierda)
     const playerContainer = document.getElementById('main-player-container');
-    const mainImg = document.getElementById('main-video-img');
+    const videoPlayer = document.getElementById('main-video-player');
+    const videoSource = document.getElementById('main-video-source');
     const mainBadge = document.getElementById('main-video-badge');
+    const playOverlay = document.getElementById('play-button-overlay');
     
-    if (playerContainer && mainImg && mainBadge) {
+    if (playerContainer && videoPlayer && mainBadge) {
         gsap.to(playerContainer, {
             scale: 0.95,
             opacity: 0.8,
             duration: 0.3,
             ease: "power1.inOut",
             onComplete: () => {
-                mainImg.src = imageUrl;
+                // Actualizar Poster y Fuente
+                videoPlayer.setAttribute('poster', imageUrl);
+                if (videoSource) {
+                    videoSource.setAttribute('src', videoUrl);
+                    videoPlayer.load(); // Importante para que el video cargue la nueva fuente
+                }
+                
                 mainBadge.textContent = category;
+                
+                // Mostrar el botón de play de nuevo al cambiar de video
+                if (playOverlay) playOverlay.style.opacity = "1";
+                if (playOverlay) playOverlay.style.pointerEvents = "auto";
 
                 gsap.to(playerContainer, {
                     scale: 1,
@@ -162,3 +174,35 @@ window.changeVideo = function(element, title, category, desc, imageUrl) {
         });
     }
 };
+
+// Listener para el botón de Play central
+document.addEventListener("DOMContentLoaded", () => {
+    const videoPlayer = document.getElementById('main-video-player');
+    const playOverlay = document.getElementById('play-button-overlay');
+
+    if (videoPlayer && playOverlay) {
+        playOverlay.addEventListener('click', () => {
+            if (videoPlayer.paused) {
+                videoPlayer.play();
+                gsap.to(playOverlay, { opacity: 0, duration: 0.3, pointerEvents: 'none' });
+            }
+        });
+
+        // Mostrar controles al pausar o al terminar
+        videoPlayer.addEventListener('pause', () => {
+            gsap.to(playOverlay, { opacity: 1, duration: 0.3, pointerEvents: 'auto' });
+        });
+
+        videoPlayer.addEventListener('ended', () => {
+            gsap.to(playOverlay, { opacity: 1, duration: 0.3, pointerEvents: 'auto' });
+        });
+        
+        // También permitir click en el video para pausar
+        videoPlayer.addEventListener('click', () => {
+            if (!videoPlayer.paused) {
+                videoPlayer.pause();
+            }
+        });
+    }
+});
+

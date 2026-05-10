@@ -13,11 +13,12 @@
         <video 
             id="hero-video" 
             autoplay loop muted playsinline 
-            preload="none"
-            class="absolute inset-0 w-full h-full object-cover"
+            preload="auto"
+            fetchpriority="high"
+            class="absolute inset-0 w-full h-full object-cover brightness-[0.7] contrast-[1.2] blur-[1.2px] scale-[1.03] opacity-0 transition-opacity duration-1000"
         >
             <source 
-                data-src="https://github.com/Tiburonchin/Videos_Doctor_Cabello/raw/main/herosectionV1.mp4" 
+                data-src="<?php echo get_template_directory_uri(); ?>/assets/video/Hero_section_new2.mp4" 
                 type="video/mp4"
             >
         </video>
@@ -30,8 +31,8 @@
     <div class="absolute inset-0 z-[1] bg-gradient-to-b from-slate-950/40 via-slate-950/20 to-slate-950/70"></div>
     <div class="absolute inset-0 z-[2] bg-gradient-to-r from-slate-950/80 via-slate-950/40 to-transparent"></div>
     
-    <!-- Noise texture -->
-    <div class="absolute inset-0 z-[3] opacity-[0.03] pointer-events-none" style="background-image:url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22n%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22/%3E%3C/svg%3E')"></div>
+    <!-- Cinematic Tint (Lightweight masking) -->
+    <div class="absolute inset-0 z-[4] bg-primary-900/20 mix-blend-overlay pointer-events-none"></div>
 
     <!-- Bottom gradient — blends into ribbon -->
     <div class="absolute bottom-0 left-0 right-0 h-40 z-[4] pointer-events-none" style="background:linear-gradient(to top, rgb(var(--color-primary-700)), rgba(var(--color-primary-800),0.6), transparent)"></div>

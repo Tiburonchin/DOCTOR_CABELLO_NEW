@@ -3,7 +3,7 @@
 
 </div><!-- #page -->
 
-	<footer id="site-footer" class="relative z-0 bg-primary-900 flex flex-col justify-end pt-24 pb-8 px-6 lg:px-12 border-t border-white/10 overflow-hidden">
+	<footer id="site-footer" class="relative z-10 bg-primary-900 flex flex-col justify-end pt-24 pb-8 px-6 lg:px-12 border-t border-white/10 overflow-hidden">
         
         <div class="max-w-[1440px] mx-auto w-full flex flex-col justify-between h-full">
             

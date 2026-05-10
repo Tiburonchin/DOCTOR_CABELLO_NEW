@@ -21,7 +21,7 @@
                 <!-- Contenedor de Imagen -->
                 <div class="relative rounded-[3rem] overflow-hidden shadow-[0_40px_80px_-20px_rgba(0,0,0,0.6)] border border-white/10 aspect-[4/5] w-full max-w-2xl mx-auto lg:mx-0 group">
                     <img 
-                        src="<?php echo get_template_directory_uri(); ?>/assets/images/doctor_professional_portrait.png" 
+                        src="<?php echo get_template_directory_uri(); ?>/assets/images/equipo/doctor_perfil.webp" 
                         alt="Dr. Carlos Mendoza - Especialista Senior" 
                         class="w-full h-full object-cover object-top transition-transform duration-1000 group-hover:scale-105"
                     />
