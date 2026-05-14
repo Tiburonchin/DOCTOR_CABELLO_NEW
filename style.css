@@ -296,6 +296,9 @@ Text Domain: doctor-cabello
   .-top-12 {
     top: calc(var(--spacing) * -12);
   }
+  .-top-20 {
+    top: calc(var(--spacing) * -20);
+  }
   .top-0 {
     top: calc(var(--spacing) * 0);
   }
@@ -433,6 +436,9 @@ Text Domain: doctor-cabello
   }
   .-left-16 {
     left: calc(var(--spacing) * -16);
+  }
+  .-left-20 {
+    left: calc(var(--spacing) * -20);
   }
   .left-0 {
     left: calc(var(--spacing) * 0);
@@ -775,6 +781,12 @@ Text Domain: doctor-cabello
   }
   .h-screen {
     height: 100vh;
+  }
+  .min-h-\[3rem\] {
+    min-height: 3rem;
+  }
+  .min-h-\[6rem\] {
+    min-height: 6rem;
   }
   .min-h-\[100svh\] {
     min-height: 100svh;
@@ -1827,6 +1839,9 @@ Text Domain: doctor-cabello
   .pr-8 {
     padding-right: calc(var(--spacing) * 8);
   }
+  .pb-2 {
+    padding-bottom: calc(var(--spacing) * 2);
+  }
   .pb-4 {
     padding-bottom: calc(var(--spacing) * 4);
   }
@@ -1847,6 +1862,9 @@ Text Domain: doctor-cabello
   }
   .font-display {
     font-family: Outfit, sans-serif;
+  }
+  .font-mono {
+    font-family: var(--font-mono);
   }
   .font-serif {
     font-family: Newsreader, serif;
@@ -2260,6 +2278,10 @@ Text Domain: doctor-cabello
   }
   .blur-3xl {
     --tw-blur: blur(var(--blur-3xl));
+    filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
+  }
+  .blur-\[100px\] {
+    --tw-blur: blur(100px);
     filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
   }
   .blur-\[110px\] {
@@ -2918,6 +2940,11 @@ Text Domain: doctor-cabello
       height: 800px;
     }
   }
+  .sm\:min-h-\[5rem\] {
+    @media (width >= 40rem) {
+      min-height: 5rem;
+    }
+  }
   .sm\:w-48 {
     @media (width >= 40rem) {
       width: calc(var(--spacing) * 48);
@@ -3201,6 +3228,11 @@ Text Domain: doctor-cabello
   .lg\:h-auto {
     @media (width >= 64rem) {
       height: auto;
+    }
+  }
+  .lg\:min-h-\[4rem\] {
+    @media (width >= 64rem) {
+      min-height: 4rem;
     }
   }
   .lg\:w-2\/5 {

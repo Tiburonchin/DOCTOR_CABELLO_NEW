@@ -14,17 +14,28 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
             
             <!-- Contenido de Texto (Izquierda) -->
-            <div class="flex flex-col justify-center max-w-3xl text-left gs-reveal-left">
+            <div class="flex flex-col justify-center max-w-3xl text-left gs-reveal-left relative">
+                
+                <!-- Glow sutil detrás del texto -->
+                <div class="absolute -top-20 -left-20 w-64 h-64 bg-primary-100/30 rounded-full blur-[100px] -z-10"></div>
 
-                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.1] text-semantic-mainText tracking-tight mb-6 gs-item">
-                    Recupera tu cabello, <br/>
-                    <span class="text-primary-600 relative">
-                        recupera tu confianza
-                        <svg class="absolute w-full h-3 -bottom-1 left-0 text-secondary-400 opacity-40" viewBox="0 0 200 9" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.00025 6.77252C42.8532 2.27483 133.51 -2.00412 198.056 6.77252" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <!-- Badge superior -->
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary-50 border border-primary-100 text-primary-700 text-xs font-bold uppercase tracking-wider mb-6 w-fit gs-item">
+                    <span class="relative flex h-2 w-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-primary-600"></span>
+                    </span>
+                    Medicina Capilar de Avanzada
+                </div>
+
+                <h1 class="text-4xl sm:text-5xl lg:text-7xl font-display font-bold leading-[1.05] text-semantic-mainText tracking-tight mb-8 gs-item">
+                    Tu cabello, <br/>
+                    <span class="inline-block text-transparent bg-clip-text bg-gradient-to-r from-secondary to-primary pb-2">
+                        tu confianza
                     </span>
                 </h1>
 
-                <p class="text-lg text-semantic-mutedText mb-10 max-w-xl leading-relaxed gs-item">
+                <p id="hero-description" class="text-lg text-semantic-mutedText mb-10 max-w-xl leading-relaxed gs-item min-h-[6rem] sm:min-h-[5rem] lg:min-h-[4rem]">
                     Tratamientos personalizados de última generación. Resultados naturales y duraderos diseñados específicamente para ti por expertos médicos.
                 </p>
 
