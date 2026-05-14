@@ -53,33 +53,13 @@
         }, '-=0.3');
 
     /* ==========================================
-       3. SCROLL TRIGGER — reveal after Hero
+       3. ENTRANCE — Play on load
     ========================================== */
-    const heroSection = document.getElementById('hero-section');
-    if (heroSection) {
-        ScrollTrigger.create({
-            trigger: heroSection,
-            start: 'bottom 70%',
-            onEnter: () => enterTL.play(),
-            onLeaveBack: () => enterTL.reverse(),
-        });
-    } else {
-        // If no hero, just play after a small delay
-        gsap.delayedCall(0.8, () => enterTL.play());
-    }
+    window.addEventListener('load', () => {
+        // Revelar con un pequeño delay para que no compita con la entrada del Hero
+        gsap.delayedCall(1.2, () => enterTL.play());
+    });
 
-    /* ==========================================
-       4. HIDE ON FOOTER — avoid overlap with footer content
-    ========================================== */
-    const contacto = document.getElementById('contacto');
-    if (contacto) {
-        ScrollTrigger.create({
-            trigger: contacto,
-            start: 'top center', // Hide when footer starts appearing
-            onEnter: () => gsap.to(bar, { autoAlpha: 0, x: 40, duration: 0.4, ease: 'power2.in' }),
-            onLeaveBack: () => gsap.to(bar, { autoAlpha: 1, x: 0, duration: 0.5, ease: 'power2.out' }),
-        });
-    }
 
     /* ==========================================
        5. MAGNETIC HOVER EFFECT

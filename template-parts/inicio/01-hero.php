@@ -1,133 +1,140 @@
 <?php
 /**
  * Section: 01-hero
- * Premium Hero — Clean, cinematic, professional.
- * WordPress-ready: lazy video, noscript fallback, bot-safe.
- * GSAP text scramble + staggered entry animations.
+ * Modern, High-End Hero with Image Composition.
  */
 ?>
-<section id="hero-section" class="relative w-full min-h-screen flex items-center overflow-hidden">
-    
-    <!-- Video Background -->
-    <div class="absolute inset-0 z-0 overflow-hidden">
-        <video 
-            id="hero-video" 
-            autoplay loop muted playsinline 
-            preload="auto"
-            fetchpriority="high"
-            class="absolute inset-0 w-full h-full object-cover brightness-[0.7] contrast-[1.2] blur-[1.2px] scale-[1.03] opacity-0 transition-opacity duration-1000"
-        >
-            <source 
-                data-src="<?php echo get_template_directory_uri(); ?>/assets/video/Hero_section_new2.mp4" 
-                type="video/mp4"
-            >
-        </video>
-        <noscript>
-            <div class="w-full h-full bg-gradient-to-br from-primary-900 to-primary-700"></div>
-        </noscript>
-    </div>
+<section id="hero-section" class="min-h-screen flex items-center relative overflow-hidden bg-white">
 
-    <!-- Gradient Overlays -->
-    <div class="absolute inset-0 z-[1] bg-gradient-to-b from-slate-950/40 via-slate-950/20 to-slate-950/70"></div>
-    <div class="absolute inset-0 z-[2] bg-gradient-to-r from-slate-950/80 via-slate-950/40 to-transparent"></div>
-    
-    <!-- Cinematic Tint (Lightweight masking) -->
-    <div class="absolute inset-0 z-[4] bg-primary-900/20 mix-blend-overlay pointer-events-none"></div>
+    <!-- Elementos decorativos de fondo (Blobs) -->
+    <div class="absolute top-[-10%] right-[-5%] w-[50vw] h-[50vw] bg-primary-100 rounded-full blur-3xl opacity-40 z-0 pointer-events-none"></div>
+    <div class="absolute bottom-[-10%] left-[-5%] w-[40vw] h-[40vw] bg-secondary-100 rounded-full blur-3xl opacity-40 z-0 pointer-events-none"></div>
 
-    <!-- Bottom gradient — blends into ribbon -->
-    <div class="absolute bottom-0 left-0 right-0 h-40 z-[4] pointer-events-none" style="background:linear-gradient(to top, rgb(var(--color-primary-700)), rgba(var(--color-primary-800),0.6), transparent)"></div>
+    <div class="container mx-auto px-6 lg:px-12 py-24 lg:py-32 max-w-[1440px] relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+            
+            <!-- Contenido de Texto (Izquierda) -->
+            <div class="flex flex-col justify-center max-w-3xl text-left gs-reveal-left">
 
-    <!-- Decorative accent lines -->
-    <div class="hero-accent-line absolute left-[8%] top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-white/[0.07] to-transparent z-[5] pointer-events-none"></div>
-    <div class="hero-accent-line absolute left-[42%] top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-white/[0.04] to-transparent z-[5] pointer-events-none hidden lg:block"></div>
-
-    <!-- Main Content -->
-    <div id="hero-content" class="relative z-10 w-full max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-16 pt-32 pb-32 md:pb-40">
-        <div class="max-w-3xl">
-
-            <!-- Eyebrow Badge -->
-            <div class="hero-badge mb-6 md:mb-8">
-                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.08] backdrop-blur-md border border-white/[0.12] text-white/80">
-                    <span class="relative flex h-2 w-2">
-                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
-                        <span class="relative inline-flex rounded-full h-2 w-2 bg-secondary-400"></span>
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.1] text-semantic-mainText tracking-tight mb-6 gs-item">
+                    Recupera tu cabello, <br/>
+                    <span class="text-primary-600 relative">
+                        recupera tu confianza
+                        <svg class="absolute w-full h-3 -bottom-1 left-0 text-secondary-400 opacity-40" viewBox="0 0 200 9" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.00025 6.77252C42.8532 2.27483 133.51 -2.00412 198.056 6.77252" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     </span>
-                    <span class="text-[11px] font-semibold uppercase tracking-[0.15em] font-display">Especialistas en Trasplante Capilar</span>
-                </div>
-            </div>
-
-            <!-- Headline -->
-            <div class="text-mask mb-2 md:mb-4">
-                <h1 class="hero-title font-display text-4xl sm:text-5xl md:text-7xl lg:text-[5.5rem] font-extrabold leading-[1.08] tracking-tight text-white">
-                    Recupera tu
                 </h1>
-            </div>
-            <div class="text-mask mb-6 md:mb-8">
-                <h1 class="hero-title-line2 font-display text-4xl sm:text-5xl md:text-7xl lg:text-[5.5rem] font-extrabold leading-[1.08] tracking-tight">
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-secondary-400 via-secondary to-primary-500">confianza.</span>
-                </h1>
-            </div>
 
-            <!-- Scramble Text -->
-            <div class="scramble-container mb-10 md:mb-12">
-                <p id="scramble-text" class="hero-desc font-sans text-base sm:text-lg md:text-xl text-white/60 leading-relaxed max-w-xl font-light">
-                    Tecnología de vanguardia y especialistas altamente capacitados para brindarte los mejores resultados naturales y permanentes.
+                <p class="text-lg text-semantic-mutedText mb-10 max-w-xl leading-relaxed gs-item">
+                    Tratamientos personalizados de última generación. Resultados naturales y duraderos diseñados específicamente para ti por expertos médicos.
                 </p>
-            </div>
 
-            <!-- CTA Buttons -->
-            <div class="hero-btn-container flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3 sm:gap-5">
-                <button onclick="scrollToSection('#contacto')" class="gradient-btn text-white font-bold py-3.5 px-8 sm:py-4 sm:px-10 rounded-full text-sm uppercase tracking-[0.15em] flex items-center justify-center gap-3 shadow-[0_16px_40px_-8px_rgba(var(--color-secondary-500),0.35)]">
-                    Agendar Evaluación
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-                </button>
-                <button onclick="scrollToSection('#procedimientos-section')" class="glass-btn text-white font-bold py-3.5 px-8 sm:py-4 sm:px-10 rounded-full text-sm uppercase tracking-[0.15em] flex items-center justify-center gap-3">
-                    Ver Procedimientos
-                </button>
-            </div>
+                <!-- Botones CTA -->
+                <div class="flex flex-wrap gap-4 mb-12 gs-item">
+                    <a href="#" class="px-8 py-4 bg-primary-600 text-white font-semibold rounded-xl hover:bg-primary-700 transition-all duration-300 shadow-[0_8px_20px_-6px_rgba(36,80,176,0.4)] hover:shadow-[0_12px_24px_-8px_rgba(36,80,176,0.5)] hover:-translate-y-0.5 flex items-center gap-2">
+                        Agendar Evaluación
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    </a>
+                    <a href="#" class="px-8 py-4 bg-white text-semantic-mainText font-medium rounded-xl border border-gray-200 hover:border-secondary-400 hover:text-secondary-600 transition-all duration-300 shadow-sm flex items-center gap-2">
+                        Ver Casos Reales
+                    </a>
+                </div>
 
-            <!-- Trust Indicators -->
-            <div class="hero-trust mt-10 md:mt-14 flex flex-wrap items-center gap-5 sm:gap-8">
-                <div class="flex items-center gap-3">
-                    <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white/[0.08] backdrop-blur border border-white/[0.1] flex items-center justify-center shrink-0">
-                        <svg class="w-4 h-4 sm:w-5 sm:h-5 text-secondary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                <!-- Indicadores de Confianza / Estadísticas -->
+                <div class="flex flex-wrap gap-8 items-center border-t border-gray-200 pt-8 mt-2 gs-item">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-primary-50 flex items-center justify-center text-primary-600">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        </div>
+                        <div>
+                            <p class="text-2xl font-bold text-semantic-mainText leading-none">+5k</p>
+                            <p class="text-sm text-semantic-mutedText mt-1">Pacientes Felices</p>
+                        </div>
                     </div>
-                    <div>
-                        <p class="text-white/90 text-sm font-semibold leading-tight">+15 años</p>
-                        <p class="text-white/40 text-xs">de experiencia</p>
+
+                    <div class="w-px h-10 bg-gray-200 hidden sm:block"></div>
+
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-secondary-50 flex items-center justify-center text-secondary-600">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        </div>
+                        <div>
+                            <p class="text-2xl font-bold text-semantic-mainText leading-none">98%</p>
+                            <p class="text-sm text-semantic-mutedText mt-1">Éxito Comprobado</p>
+                        </div>
                     </div>
                 </div>
-                <div class="w-px h-8 bg-white/10 hidden sm:block"></div>
-                <div class="flex items-center gap-3">
-                    <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white/[0.08] backdrop-blur border border-white/[0.1] flex items-center justify-center shrink-0">
-                        <svg class="w-4 h-4 sm:w-5 sm:h-5 text-secondary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
-                    </div>
-                    <div>
-                        <p class="text-white/90 text-sm font-semibold leading-tight">+5,000</p>
-                        <p class="text-white/40 text-xs">pacientes satisfechos</p>
-                    </div>
-                </div>
-                <div class="w-px h-8 bg-white/10 hidden sm:block"></div>
-                <div class="flex items-center gap-3">
-                    <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white/[0.08] backdrop-blur border border-white/[0.1] flex items-center justify-center shrink-0">
-                        <svg class="w-4 h-4 sm:w-5 sm:h-5 text-secondary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
-                    </div>
-                    <div>
-                        <p class="text-white/90 text-sm font-semibold leading-tight">Certificados</p>
-                        <p class="text-white/40 text-xs">internacionalmente</p>
-                    </div>
-                </div>
+
             </div>
 
+            <!-- Composición de Imágenes (Derecha) -->
+            <div class="relative h-[550px] sm:h-[700px] w-full mt-16 lg:mt-0 gs-reveal-right">
+                
+                <!-- Forma decorativa principal detrás de las imágenes -->
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[85%] h-[85%] bg-gradient-to-tr from-primary-200/50 to-secondary-100/50 blob-shape z-0 gs-blob"></div>
+
+                <!-- Forma Decorativa 1: Patrón de puntos (Arriba Izquierda) -->
+                <div class="absolute top-4 -left-6 w-24 h-24 opacity-40 z-0 gs-shape-1 text-primary-400">
+                    <svg width="100%" height="100%" fill="none" viewBox="0 0 100 100">
+                        <pattern id="dots" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                            <circle fill="currentColor" cx="2" cy="2" r="2.5"></circle>
+                        </pattern>
+                        <rect x="0" y="0" width="100%" height="100%" fill="url(#dots)"></rect>
+                    </svg>
+                </div>
+
+                <!-- Forma Decorativa 2: Anillo (Abajo Derecha) -->
+                <div class="absolute bottom-12 right-2 w-16 h-16 rounded-full border-[5px] border-secondary-400 opacity-30 z-0 gs-shape-2"></div>
+
+                <!-- Forma Decorativa 3: Círculo Sólido (Arriba Derecha) -->
+                <div class="absolute top-16 -right-8 w-12 h-12 rounded-full bg-secondary-400 opacity-30 z-0 gs-shape-3"></div>
+
+                <!-- Forma Decorativa 4: Anillo sutil (Centro Izquierda) -->
+                <div class="absolute top-1/2 -left-16 w-20 h-20 rounded-full border-2 border-primary-500 opacity-20 z-0 gs-shape-4"></div>
+
+                <!-- Forma Decorativa 5: Círculo Sólido pequeño (Abajo Izquierda) -->
+                <div class="absolute bottom-4 left-1/4 w-6 h-6 rounded-full bg-secondary-500 opacity-40 z-0 gs-shape-5"></div>
+
+                <!-- Forma Decorativa 6: Patrón de puntos (Centro Derecha) -->
+                <div class="absolute top-1/3 -right-12 w-20 h-20 opacity-30 z-0 gs-shape-6 text-secondary-500">
+                    <svg width="100%" height="100%" fill="none" viewBox="0 0 100 100">
+                        <pattern id="dots-2" x="0" y="0" width="16" height="16" patternUnits="userSpaceOnUse">
+                            <circle fill="currentColor" cx="2" cy="2" r="2"></circle>
+                        </pattern>
+                        <rect x="0" y="0" width="100%" height="100%" fill="url(#dots-2)"></rect>
+                    </svg>
+                </div>
+
+                <!-- Imagen Secundaria (Antes/Proceso) - Atrás -->
+                <div class="absolute bottom-[8%] left-[0%] w-[58%] h-[55%] gs-img-2 z-10 cursor-pointer">
+                    <div class="w-full h-full bg-white p-3 sm:p-4 rounded-[2.5rem] img-shadow -rotate-3">
+                        <div class="w-full h-full relative rounded-[1.5rem] overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=800&auto=format&fit=crop" alt="Análisis capilar en clínica" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover/card:scale-110">
+                            
+                            <!-- Badge "Antes/Proceso" -->
+                            <div class="absolute bottom-4 left-4 bg-white/95 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm text-xs font-medium text-semantic-mutedText flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                                Análisis Inicial
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Imagen Principal (Después/Resultado) - Adelante -->
+                <div class="absolute top-[8%] right-[0%] w-[62%] h-[58%] gs-img-1 z-20 cursor-pointer">
+                    <div class="w-full h-full bg-white p-3 sm:p-4 rounded-[2.5rem] img-shadow rotate-2">
+                        <div class="w-full h-full relative rounded-[1.5rem] overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1618077360395-f3068be8e001?q=80&w=800&auto=format&fit=crop" alt="Paciente con resultado exitoso" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover/card:scale-110">
+                            
+                            <!-- Badge "Después" -->
+                            <div class="absolute top-4 right-4 bg-white/95 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm text-xs font-semibold text-primary-700 flex items-center gap-2">
+                                <span class="w-2.5 h-2.5 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)]"></span>
+                                Resultado
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
-
-    <!-- Scroll Indicator -->
-    <div class="hero-scroll-indicator absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 hidden md:flex">
-        <span class="text-white/30 text-[10px] uppercase tracking-[0.3em] font-display font-semibold">Descubre más</span>
-        <div class="w-6 h-10 border-2 border-white/20 rounded-full flex justify-center pt-2">
-            <div class="hero-scroll-dot w-1 h-2.5 bg-secondary-400 rounded-full"></div>
-        </div>
-    </div>
-
 </section>

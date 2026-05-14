@@ -1,228 +1,145 @@
 /**
- * Hero Section Animations
- * Premium staggered entry, scroll parallax, text scramble.
- * WordPress-optimized: lazy video, visibility-aware scramble, cleanup.
- *
- * Dependencies: gsap, gsap-scrolltrigger (enqueued via functions.php)
+ * Hero Section Animations - Final Optimized Version
  */
 (function () {
     'use strict';
 
-    /* ==========================================
-       GUARD — Bail if dependencies are missing
-    ========================================== */
-    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
-    gsap.registerPlugin(ScrollTrigger);
-
-    const heroSection = document.getElementById('hero-section');
-    if (!heroSection) return;
-
-    /* ==========================================
-       0. LAZY VIDEO — Load source only when
-          the page is ready (saves bandwidth,
-          keeps bots from fetching heavy MP4)
-    ========================================== */
-    const heroVideo = document.getElementById('hero-video');
-    if (heroVideo) {
-        const source = heroVideo.querySelector('source[data-src]');
-        if (source) {
-            source.src = source.dataset.src;
-            source.removeAttribute('data-src');
-            heroVideo.load();
-        }
-        
-        // Fade in when ready
-        heroVideo.addEventListener('loadeddata', () => {
-            heroVideo.classList.remove('opacity-0');
-        });
-
-        heroVideo.playbackRate = 0.75;
+    if (typeof gsap === 'undefined') return;
+    
+    if (typeof ScrollTrigger !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
     }
 
-    /* ==========================================
-       1. INITIAL STATE — Everything hidden
-    ========================================== */
-    gsap.set('.hero-badge',            { autoAlpha: 0, y: 30 });
-    gsap.set('.hero-title',            { yPercent: 120, rotateZ: 1.5 });
-    gsap.set('.hero-title-line2',      { yPercent: 120, rotateZ: 1.5 });
-    gsap.set('.hero-desc',             { autoAlpha: 0, y: 20 });
-    gsap.set('.hero-btn-container',    { y: 40, autoAlpha: 0 });
-    gsap.set('.hero-trust',            { y: 30, autoAlpha: 0 });
-    gsap.set('.hero-scroll-indicator', { autoAlpha: 0, y: 20 });
-    gsap.set('.hero-accent-line',      { scaleY: 0, transformOrigin: 'top center' });
+    const initHeroAnim = () => {
+        const heroSection = document.getElementById('hero-section');
+        if (!heroSection) return;
 
-    /* ==========================================
-       2. ENTRANCE TIMELINE — Cinematic stagger
-    ========================================== */
-    const tlHero = gsap.timeline({ defaults: { ease: 'power4.out' } });
+        const ctx = gsap.context(() => {
+            
+            const tl = gsap.timeline({ 
+                defaults: { ease: "power4.out" } 
+            });
 
-    window.addEventListener('load', () => {
-        tlHero
-            .to('.hero-accent-line', {
-                scaleY: 1, duration: 1.8,
-                ease: 'power2.inOut', stagger: 0.2
-            }, 0)
-            .to('.hero-badge', {
-                autoAlpha: 1, y: 0, duration: 0.8,
-                ease: 'power3.out'
-            }, 0.3)
-            .to('.hero-title', {
-                yPercent: 0, rotateZ: 0, duration: 1.4
-            }, 0.5)
-            .to('.hero-title-line2', {
-                yPercent: 0, rotateZ: 0, duration: 1.4
-            }, 0.7)
-            .to('.hero-desc', {
-                autoAlpha: 1, y: 0, duration: 1.0
-            }, '-=0.8')
-            .to('.hero-btn-container', {
-                y: 0, autoAlpha: 1, duration: 1,
-                ease: 'back.out(1.5)'
-            }, '-=0.6')
-            .to('.hero-trust', {
-                y: 0, autoAlpha: 1, duration: 0.9,
-                ease: 'power3.out'
-            }, '-=0.5')
-            .to('.hero-scroll-indicator', {
-                autoAlpha: 1, y: 0, duration: 0.8,
-                ease: 'power2.out'
-            }, '-=0.3');
-    });
+            // 1. Entrada de textos
+            tl.fromTo(".gs-item", 
+                { y: 40, opacity: 0 }, 
+                { y: 0, opacity: 1, duration: 1.2, stagger: 0.15 }
+            );
 
-    /* ==========================================
-       3. SCROLL PARALLAX EXIT
-    ========================================== */
-    const heroContent = document.querySelector('#hero-content');
-    if (heroContent) {
-        const exitTl = gsap.timeline({
-            scrollTrigger: {
-                trigger: '#hero-section',
-                start: 'top top',
-                end: 'bottom top',
-                scrub: true
+            // 2. Entrada del blob
+            tl.fromTo(".gs-blob",
+                { scale: 0.6, opacity: 0, rotation: -25 },
+                { scale: 1, opacity: 1, rotation: 0, duration: 1.8, ease: "expo.out" },
+                "-=1.4"
+            );
+
+            // 3. Formas decorativas (Todas: 1 a 6)
+            tl.fromTo(['[class*="gs-shape-"]'],
+                { scale: 0, opacity: 0, rotation: -45 },
+                { 
+                    scale: 1, 
+                    opacity: (i, el) => {
+                        if (el.classList.contains('opacity-10')) return 0.1;
+                        if (el.classList.contains('opacity-20')) return 0.2;
+                        if (el.classList.contains('opacity-30')) return 0.3;
+                        if (el.classList.contains('opacity-40')) return 0.4;
+                        if (el.classList.contains('opacity-50')) return 0.5;
+                        return 1;
+                    }, 
+                    rotation: 0, 
+                    duration: 1.2, 
+                    stagger: 0.1, 
+                    ease: "back.out(1.7)" 
+                },
+                "-=1.4"
+            );
+
+            // 4. Entrada de imágenes
+            tl.fromTo(".gs-img-2",
+                { x: -60, y: 50, opacity: 0, rotation: -12 },
+                { x: 0, y: 0, opacity: 1, rotation: -3, duration: 1.5, ease: "power4.out" },
+                "-=1"
+            );
+
+            tl.fromTo(".gs-img-1",
+                { x: 60, y: -40, opacity: 0, rotation: 12 },
+                { x: 0, y: 0, opacity: 1, rotation: 2, duration: 1.5, ease: "power4.out" },
+                "-=1.3"
+            );
+
+            // 5. Animaciones continuas
+            const continuousAnim = () => {
+                gsap.to(".gs-blob", {
+                    rotation: 8,
+                    scale: 1.08,
+                    duration: 6,
+                    ease: "sine.inOut",
+                    yoyo: true,
+                    repeat: -1
+                });
+
+                // Flotación variada para todas las formas
+                gsap.to(".gs-shape-1", { y: -20, duration: 4, ease: "sine.inOut", yoyo: true, repeat: -1 });
+                gsap.to(".gs-shape-2", { y: 25, x: -15, duration: 5, ease: "sine.inOut", yoyo: true, repeat: -1, delay: 0.2 });
+                gsap.to(".gs-shape-3", { y: -15, x: 10, duration: 4, ease: "sine.inOut", yoyo: true, repeat: -1, delay: 0.4 });
+                gsap.to(".gs-shape-4", { y: 20, rotation: 15, duration: 6, ease: "sine.inOut", yoyo: true, repeat: -1 });
+                gsap.to(".gs-shape-5", { x: 15, duration: 3, ease: "sine.inOut", yoyo: true, repeat: -1, delay: 0.1 });
+                gsap.to(".gs-shape-6", { y: -25, x: 10, duration: 5, ease: "sine.inOut", yoyo: true, repeat: -1, delay: 0.3 });
+            };
+
+            gsap.delayedCall(tl.duration(), continuousAnim);
+
+            // 6. Parallax e Hover
+            const rightContainer = document.querySelector('.gs-reveal-right');
+            const img1 = document.querySelector('.gs-img-1');
+            const img2 = document.querySelector('.gs-img-2');
+
+            if (rightContainer && img1 && img2) {
+                rightContainer.addEventListener('mousemove', (e) => {
+                    const rect = rightContainer.getBoundingClientRect();
+                    const x = (e.clientX - rect.left - rect.width / 2) / (rect.width / 2);
+                    const y = (e.clientY - rect.top - rect.height / 2) / (rect.height / 2);
+
+                    gsap.to(img1, { x: x * 20, y: y * 20, duration: 1, ease: "power2.out", overwrite: 'auto' });
+                    gsap.to(img2, { x: x * -15, y: y * -15, duration: 1, ease: "power2.out", overwrite: 'auto' });
+                    
+                    // Parallax sutil también en las formas decorativas
+                    gsap.to('[class*="gs-shape-"]', {
+                        x: (i) => x * (10 + i * 2),
+                        y: (i) => y * (10 + i * 2),
+                        duration: 1.5,
+                        ease: "power2.out",
+                        overwrite: 'auto'
+                    });
+                });
+
+                rightContainer.addEventListener('mouseleave', () => {
+                    gsap.to([img1, img2, '[class*="gs-shape-"]'], { x: 0, y: 0, duration: 1.5, ease: "power3.out", overwrite: 'auto' });
+                });
+
+                [img1, img2].forEach((img, index) => {
+                    const inner = img.querySelector('div');
+                    const initialRotate = index === 0 ? 2 : -3;
+
+                    img.addEventListener('mouseenter', () => {
+                        gsap.to(inner, { scale: 1.05, rotation: 0, duration: 0.6, ease: "power2.out", overwrite: true });
+                        gsap.set(img, { zIndex: 40 });
+                    });
+
+                    img.addEventListener('mouseleave', () => {
+                        gsap.to(inner, { scale: 1, rotation: initialRotate, duration: 0.8, ease: "power3.out", overwrite: true });
+                        gsap.set(img, { zIndex: index === 0 ? 20 : 10 });
+                    });
+                });
             }
-        });
 
-        exitTl
-            .to('.hero-badge',          { y: -60, autoAlpha: 0, ease: 'none' }, 0)
-            .to('.hero-title',          { y: -100, autoAlpha: 0, ease: 'none' }, 0.05)
-            .to('.hero-title-line2',    { y: -80, autoAlpha: 0, ease: 'none' }, 0.08)
-            .to('.hero-desc',           { y: -50, autoAlpha: 0, ease: 'none' }, 0.1)
-            .to('.hero-btn-container',  { y: -30, autoAlpha: 0, ease: 'none' }, 0.15)
-            .to('.hero-trust',          { y: -20, autoAlpha: 0, ease: 'none' }, 0.18)
-            .to('.hero-scroll-indicator', { autoAlpha: 0, ease: 'none' }, 0)
-            .to('#hero-video',          { scale: 1.08, ease: 'none' }, 0);
+        }, heroSection);
+    };
+
+    if (document.readyState === 'complete') {
+        initHeroAnim();
+    } else {
+        window.addEventListener('load', initHeroAnim);
     }
 
-    /* ==========================================
-       4. SCROLL INDICATOR BOUNCE
-    ========================================== */
-    gsap.to('.hero-scroll-dot', {
-        y: 12, duration: 1.2,
-        ease: 'sine.inOut',
-        yoyo: true, repeat: -1, delay: 3
-    });
-
-    /* ==========================================
-       5. TEXT SCRAMBLE — Only runs while
-          hero is in viewport (perf-safe)
-    ========================================== */
-    class TextScrambler {
-        constructor(el) {
-            this.el = el;
-            this.chars = '!<>-_\\/[]{}—=+*^?#________';
-            this.update = this.update.bind(this);
-        }
-        setText(newText) {
-            const oldText = this.el.innerText;
-            const length = Math.max(oldText.length, newText.length);
-            const promise = new Promise((resolve) => this.resolve = resolve);
-            this.queue = [];
-            for (let i = 0; i < length; i++) {
-                const from = oldText[i] || '';
-                const to = newText[i] || '';
-                const start = Math.floor(Math.random() * 40);
-                const end = start + Math.floor(Math.random() * 40);
-                this.queue.push({ from, to, start, end });
-            }
-            cancelAnimationFrame(this.frameRequest);
-            this.frame = 0;
-            this.update();
-            return promise;
-        }
-        update() {
-            let output = '';
-            let complete = 0;
-            for (let i = 0, n = this.queue.length; i < n; i++) {
-                let { from, to, start, end, char } = this.queue[i];
-                if (this.frame >= end) {
-                    complete++;
-                    output += to;
-                } else if (this.frame >= start) {
-                    if (!char || Math.random() < 0.28) {
-                        char = this.randomChar();
-                        this.queue[i].char = char;
-                    }
-                    output += `<span class="text-secondary-400/60">${char}</span>`;
-                } else {
-                    output += from;
-                }
-            }
-            this.el.innerHTML = output;
-            if (complete === this.queue.length) {
-                this.resolve();
-            } else {
-                this.frameRequest = requestAnimationFrame(this.update);
-                this.frame++;
-            }
-        }
-        randomChar() {
-            return this.chars[Math.floor(Math.random() * this.chars.length)];
-        }
-    }
-
-    const phrases = [
-        'Tecnología de vanguardia y especialistas altamente capacitados para brindarte los mejores resultados naturales y permanentes.',
-        'Diseñamos de manera artística la línea frontal de tu cabello para lograr una apariencia indetectable y 100% natural.',
-        'Recupera la densidad capilar sin dolor y con una recuperación exprés gracias a nuestra técnica de micro-extracción folicular.'
-    ];
-
-    let scrambleIndex = 0;
-    let scrambleInterval = null;
-    let heroVisible = true;
-    const scramblerElement = document.getElementById('scramble-text');
-
-    if (scramblerElement) {
-        const scrambler = new TextScrambler(scramblerElement);
-
-        function startScramble() {
-            if (scrambleInterval) return;
-            scrambleInterval = setInterval(() => {
-                if (!heroVisible) return;
-                scrambleIndex = (scrambleIndex + 1) % phrases.length;
-                scrambler.setText(phrases[scrambleIndex]);
-            }, 4500);
-        }
-
-        function stopScramble() {
-            if (scrambleInterval) {
-                clearInterval(scrambleInterval);
-                scrambleInterval = null;
-            }
-        }
-
-        // Only run the scramble effect when hero is visible
-        ScrollTrigger.create({
-            trigger: '#hero-section',
-            start: 'top bottom',
-            end: 'bottom top',
-            onEnter: () => { heroVisible = true; startScramble(); },
-            onLeave: () => { heroVisible = false; stopScramble(); },
-            onEnterBack: () => { heroVisible = true; startScramble(); },
-            onLeaveBack: () => { heroVisible = false; stopScramble(); },
-        });
-
-        // Start on load
-        startScramble();
-    }
 })();

@@ -50,6 +50,12 @@ module.exports = {
         muted: 'rgb(var(--text-muted) / <alpha-value>)',
         borderL: 'rgb(var(--border-light) / <alpha-value>)',
         borderB: 'rgb(var(--border-base) / <alpha-value>)',
+        semantic: {
+          background: 'rgb(var(--bg-background) / <alpha-value>)',
+          surface: 'rgb(var(--bg-surface) / <alpha-value>)',
+          mainText: 'rgb(var(--text-main) / <alpha-value>)',
+          mutedText: 'rgb(var(--text-muted) / <alpha-value>)',
+        }
       },
       zIndex: {
         elevate: 'var(--z-elevate)',
